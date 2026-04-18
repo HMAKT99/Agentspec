@@ -1,0 +1,5 @@
+{
+  "ruleOptions": {
+    "tokens/buried-rule": { "attentionTokens": 50 }
+  }
+}

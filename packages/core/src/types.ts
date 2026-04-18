@@ -1,6 +1,8 @@
 import type { Root } from "mdast";
 import type { z } from "zod";
 
+import type { InlineCodeRef } from "./inline-code.js";
+
 export type Severity = "error" | "warning" | "info";
 
 export type RuleCategory =
@@ -50,6 +52,7 @@ export interface ParsedSpec {
   tree: Root;
   frontmatter: Frontmatter;
   extractedRules: ExtractedRule[];
+  inlineCode: InlineCodeRef[];
   tokens: number;
 }
 
@@ -81,7 +84,7 @@ export interface Rule<Options = unknown> {
   category: RuleCategory;
   fixable: "safe" | "unsafe" | false;
   docsUrl: string;
-  schema?: z.ZodType<Options>;
+  schema?: z.ZodType<Options, z.ZodTypeDef, any>;
   run(ctx: RuleContext<Options>): RuleResult[];
   fix?(ctx: RuleContext<Options>, result: RuleResult): Fix | null;
 }

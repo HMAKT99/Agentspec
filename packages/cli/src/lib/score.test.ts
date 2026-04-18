@@ -20,6 +20,7 @@ function makeSpec(partial: Partial<ParsedSpec> = {}): ParsedSpec {
     tree: { type: "root", children: [] } as any,
     frontmatter: {},
     extractedRules: [],
+    inlineCode: [],
     tokens: 100,
     ...partial,
   };

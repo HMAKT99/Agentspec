@@ -1,0 +1,5 @@
+{
+  "ruleOptions": {
+    "tokens/budget": { "max": 10 }
+  }
+}

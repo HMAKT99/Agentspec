@@ -1,5 +1,7 @@
 export { parseSpec } from "./parse.js";
 export { extractRules } from "./extract.js";
+export { extractInlineCode } from "./inline-code.js";
+export type { InlineCodeRef } from "./inline-code.js";
 export { lint } from "./lint.js";
 export type {
   BindingKind,

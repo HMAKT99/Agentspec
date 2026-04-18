@@ -1,0 +1,5 @@
+{
+  "ruleOptions": {
+    "tools/unknown-tool": { "allowed": ["gh"] }
+  }
+}
