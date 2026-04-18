@@ -2,6 +2,14 @@ import { relative } from "node:path";
 import type { LintReport, RuleResult } from "@agentspec/core";
 import pc from "picocolors";
 
+export type OutputFormat = "pretty" | "json" | "github";
+
+export function renderReport(report: LintReport, format: OutputFormat): string {
+  if (format === "json") return `${renderJson(report)}\n`;
+  if (format === "github") return renderGithub(report);
+  return renderPretty(report);
+}
+
 export function renderJson(report: LintReport): string {
   const payload = {
     errorCount: report.errorCount,
@@ -22,6 +30,35 @@ export function renderJson(report: LintReport): string {
     })),
   };
   return JSON.stringify(payload, null, 2);
+}
+
+export function renderGithub(report: LintReport): string {
+  if (report.results.length === 0) return "";
+  const lines: string[] = [];
+  for (const r of report.results) {
+    const cmd = githubCommand(r.severity);
+    const file = r.range.start.file;
+    const line = r.range.start.line;
+    const col = r.range.start.column;
+    const endLine = r.range.end.line;
+    const endCol = r.range.end.column;
+    const title = r.ruleId;
+    const msg = escapeGithub(r.message);
+    lines.push(
+      `::${cmd} file=${file},line=${line},col=${col},endLine=${endLine},endColumn=${endCol},title=${title}::${msg}`,
+    );
+  }
+  return `${lines.join("\n")}\n`;
+}
+
+function githubCommand(sev: "error" | "warning" | "info"): string {
+  if (sev === "error") return "error";
+  if (sev === "warning") return "warning";
+  return "notice";
+}
+
+function escapeGithub(s: string): string {
+  return s.replace(/%/g, "%25").replace(/\r/g, "%0D").replace(/\n/g, "%0A");
 }
 
 export function renderPretty(report: LintReport): string {

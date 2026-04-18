@@ -29,6 +29,9 @@ importers:
 
   packages/cli:
     dependencies:
+      '@agentspec/config':
+        specifier: workspace:*
+        version: link:../config
       '@agentspec/core':
         specifier: workspace:*
         version: link:../core
@@ -47,6 +50,25 @@ importers:
       tinyglobby:
         specifier: ^0.2.10
         version: 0.2.16
+    devDependencies:
+      '@types/node':
+        specifier: ^20.17.0
+        version: 20.19.39
+
+  packages/config:
+    dependencies:
+      '@agentspec/core':
+        specifier: workspace:*
+        version: link:../core
+      jiti:
+        specifier: ^2.4.2
+        version: 2.6.1
+      yaml:
+        specifier: ^2.6.1
+        version: 2.8.3
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: ^20.17.0
@@ -944,6 +966,10 @@ packages:
 
   jackspeak@3.4.3:
     resolution: {integrity: sha512-OGlZQpz2yfahA/Rd1Y8Cd9SIEsqvXkLVoSw/cgwhnhFMDbsQFeZYoJJ7bIZBS9BcamUW96asq/npPWugM+RQBw==}
+
+  jiti@2.6.1:
+    resolution: {integrity: sha512-ekilCSN1jwRvIbgeg/57YFh8qQDNbwDb9xT/qu2DAHbFFZUicIl4ygVaAvzveMhMVr3LnpSKTNnwt8PoOfmKhQ==}
+    hasBin: true
 
   js-yaml@3.14.2:
     resolution: {integrity: sha512-PMSmkqxr106Xa156c2M265Z+FTrPl+oxd/rgOQy2tijQeK5TxQ43psO1ZCwhVOSdnn+RzkzlRz/eY4BgJBYVpg==}
@@ -2234,6 +2260,8 @@ snapshots:
       '@isaacs/cliui': 8.0.2
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
+
+  jiti@2.6.1: {}
 
   js-yaml@3.14.2:
     dependencies:

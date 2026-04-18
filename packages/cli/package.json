@@ -21,6 +21,7 @@
     "test": "vitest run --coverage"
   },
   "dependencies": {
+    "@agentspec/config": "workspace:*",
     "@agentspec/core": "workspace:*",
     "@agentspec/rules": "workspace:*",
     "citty": "^0.1.6",
