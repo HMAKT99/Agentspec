@@ -17,6 +17,8 @@ export type {
 export { DiskCache, NullCache, hashKey } from "./cache.js";
 export { HeuristicClassifier } from "./classifier.js";
 export { loadTaskFile, taskSchema } from "./task-file.js";
+export { createBehaviorRules } from "./behavior-rules.js";
+export type { BehaviorRuleOptions } from "./behavior-rules.js";
 export type {
   BehaviorReport,
   CacheKey,

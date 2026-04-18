@@ -1,4 +1,5 @@
 import { runMain as citRunMain, defineCommand } from "citty";
+import { diffCommand } from "./commands/diff.js";
 import { explainCommand } from "./commands/explain.js";
 import { fixCommand } from "./commands/fix.js";
 import { initCommand } from "./commands/init.js";
@@ -18,6 +19,7 @@ export const main = defineCommand({
     fix: fixCommand,
     score: scoreCommand,
     test: testCommand,
+    diff: diffCommand,
     explain: explainCommand,
   },
 });

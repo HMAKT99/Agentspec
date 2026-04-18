@@ -1,19 +1,22 @@
-import { readdir } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { type AgentSpecConfig, ConfigError, loadConfig } from "@agentspec/config";
+import { lint, parseSpec } from "@agentspec/core";
 import {
   type BehaviorReport,
   DiskCache,
   HeuristicClassifier,
   NullCache,
   type Task,
+  createBehaviorRules,
   loadTaskFile,
   predictBehavior,
 } from "@agentspec/engine";
 import { defineCommand } from "citty";
 import pc from "picocolors";
 
-import { readFile } from "node:fs/promises";
+import { renderReport as renderLintReport } from "../format/index.js";
+import { toLintConfig } from "../lib/config-to-lint.js";
 import { resolveAdapters } from "../lib/resolve-adapters.js";
 
 export const testCommand = defineCommand({
@@ -127,13 +130,28 @@ export const testCommand = defineCommand({
       budget: { usdMax: budgetUsd },
     });
 
+    const behaviorRules = createBehaviorRules(report);
+    const specForLint = parseSpec(specPath, specText);
+    const lintReport = lint({
+      specs: [specForLint],
+      rules: behaviorRules,
+      config: toLintConfig(config),
+    });
+
     if (args.format === "json") {
-      process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+      process.stdout.write(
+        `${JSON.stringify({ report, behaviorLint: lintReport.results }, null, 2)}\n`,
+      );
     } else {
       process.stdout.write(renderReport(report));
+      if (lintReport.results.length > 0) {
+        process.stdout.write("\n");
+        process.stdout.write(renderLintReport(lintReport, "pretty"));
+      }
     }
 
     if (report.budgetExceeded) process.exit(1);
+    if (lintReport.errorCount > 0) process.exit(1);
     process.exit(0);
   },
 });
