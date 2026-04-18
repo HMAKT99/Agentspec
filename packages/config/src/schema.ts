@@ -27,6 +27,28 @@ export const scoreSchema = z
   })
   .strict();
 
+export const providerSchema = z.enum(["anthropic", "openai", "google"]);
+
+export const pricingSchema = z
+  .object({
+    inputPerMillion: z.number().nonnegative(),
+    outputPerMillion: z.number().nonnegative(),
+  })
+  .strict();
+
+export const modelObjectSchema = z
+  .object({
+    id: z.string().min(1).optional(),
+    provider: providerSchema,
+    modelId: z.string().min(1),
+    pricing: pricingSchema.optional(),
+    maxOutputTokens: z.number().int().positive().optional(),
+  })
+  .strict();
+
+// Accept either a short "provider:modelId" string or a full object.
+export const modelEntrySchema = z.union([z.string().min(1), modelObjectSchema]);
+
 export const configSchema = z
   .object({
     specs: z.array(specInputSchema).default([
@@ -36,7 +58,7 @@ export const configSchema = z
     rules: z.record(z.string(), severitySchema).default({}),
     ruleOptions: z.record(z.string(), z.unknown()).default({}),
     budgets: budgetsSchema.default({}),
-    models: z.array(z.string()).default([]),
+    models: z.array(modelEntrySchema).default([]),
     behaviorTests: behaviorTestsSchema.default({}),
     score: scoreSchema.default({}),
   })

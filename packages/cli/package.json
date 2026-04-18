@@ -23,6 +23,7 @@
   "dependencies": {
     "@agentspec/config": "workspace:*",
     "@agentspec/core": "workspace:*",
+    "@agentspec/engine": "workspace:*",
     "@agentspec/rules": "workspace:*",
     "citty": "^0.1.6",
     "cli-table3": "^0.6.5",
