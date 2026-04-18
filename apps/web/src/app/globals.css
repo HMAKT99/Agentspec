@@ -31,3 +31,66 @@ body {
   background: var(--color-accent-soft);
   color: var(--color-fg);
 }
+
+.rule-prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.rule-prose h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.rule-prose p,
+.rule-prose ul,
+.rule-prose ol {
+  margin-bottom: 1rem;
+  color: var(--color-fg-muted);
+  line-height: 1.7;
+}
+
+.rule-prose strong {
+  color: var(--color-fg);
+}
+
+.rule-prose ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.rule-prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.rule-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background: var(--color-bg-alt);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+
+.rule-prose pre {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.rule-prose pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
