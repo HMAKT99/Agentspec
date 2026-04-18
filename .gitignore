@@ -1,5 +1,7 @@
 node_modules/
 dist/
+!apps/action/dist/
+apps/action/dist-ts/
 .turbo/
 coverage/
 .agentspec/

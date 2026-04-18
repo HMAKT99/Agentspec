@@ -1,0 +1,46 @@
+name: "AgentSpec"
+description: "Lint, test, and score agent instruction files (CLAUDE.md, AGENTS.md, MCP specs)"
+author: "AgentSpec contributors"
+branding:
+  icon: "check-square"
+  color: "orange"
+
+inputs:
+  config:
+    description: "Path to agentspec config file (default: auto-discover)"
+    required: false
+  fail-below:
+    description: "Fail the check if the score drops below this value (0-100)"
+    required: false
+    default: "70"
+  run-behavior-tests:
+    description: "Execute behavior-prediction engine (costs API credits)"
+    required: false
+    default: "false"
+  models:
+    description: "Comma-separated subset of models to run (overrides config.models)"
+    required: false
+  budget-usd:
+    description: "Hard USD budget ceiling for the behavior run"
+    required: false
+    default: "1"
+  comment:
+    description: "Post sticky PR comment with results"
+    required: false
+    default: "true"
+  github-token:
+    description: "Token used to upsert the PR comment"
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  score:
+    description: "Numeric score (0-100)"
+  errors:
+    description: "Number of error-severity diagnostics"
+  warnings:
+    description: "Number of warning-severity diagnostics"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
