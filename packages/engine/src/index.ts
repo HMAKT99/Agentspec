@@ -1,0 +1,22 @@
+export { predictBehavior, BudgetExceededError } from "./predict.js";
+export { MockAdapter } from "./mock-adapter.js";
+export { DiskCache, NullCache, hashKey } from "./cache.js";
+export { HeuristicClassifier } from "./classifier.js";
+export { loadTaskFile, taskSchema } from "./task-file.js";
+export type {
+  BehaviorReport,
+  CacheKey,
+  CacheProvider,
+  CachedEntry,
+  CallOpts,
+  ModelAdapter,
+  ModelRef,
+  ModelResponse,
+  Outcome,
+  OutcomeClassifier,
+  PerModelMetrics,
+  PerTaskMetrics,
+  PredictInput,
+  RunRecord,
+  Task,
+} from "./types.js";
