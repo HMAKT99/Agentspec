@@ -30,6 +30,7 @@
     "ignore": [
       "dist",
       "dist-ts",
+      ".next",
       "node_modules",
       ".turbo",
       "coverage",
