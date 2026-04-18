@@ -4,6 +4,7 @@ import { fixCommand } from "./commands/fix.js";
 import { initCommand } from "./commands/init.js";
 import { lintCommand } from "./commands/lint.js";
 import { scoreCommand } from "./commands/score.js";
+import { testCommand } from "./commands/test.js";
 
 export const main = defineCommand({
   meta: {
@@ -16,6 +17,7 @@ export const main = defineCommand({
     lint: lintCommand,
     fix: fixCommand,
     score: scoreCommand,
+    test: testCommand,
     explain: explainCommand,
   },
 });
