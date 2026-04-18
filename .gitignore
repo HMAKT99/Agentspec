@@ -2,9 +2,11 @@ node_modules/
 dist/
 !apps/action/dist/
 apps/action/dist-ts/
+.next/
 .turbo/
 coverage/
 .agentspec/
+*.tsbuildinfo
 
 .env
 .env.*
