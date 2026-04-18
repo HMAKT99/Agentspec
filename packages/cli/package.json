@@ -1,0 +1,37 @@
+{
+  "name": "@agentspec/cli",
+  "version": "0.0.1",
+  "description": "AgentSpec CLI — lint, test, and score agent instruction files",
+  "type": "module",
+  "bin": {
+    "agentspec": "./bin/agentspec.mjs"
+  },
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js"
+    }
+  },
+  "files": ["bin", "dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@agentspec/core": "workspace:*",
+    "@agentspec/rules": "workspace:*",
+    "citty": "^0.1.6",
+    "cli-table3": "^0.6.5",
+    "picocolors": "^1.1.1",
+    "tinyglobby": "^0.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

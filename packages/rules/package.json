@@ -1,0 +1,29 @@
+{
+  "name": "@agentspec/rules",
+  "version": "0.0.1",
+  "description": "Built-in rule definitions for AgentSpec",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@agentspec/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
