@@ -1,6 +1,6 @@
 import type { LintReport } from "@agentspec/core";
 import { describe, expect, it } from "vitest";
-import { renderJson, renderPretty } from "./index.js";
+import { renderGithub, renderJson, renderPretty, renderReport } from "./index.js";
 
 const emptyReport: LintReport = {
   results: [],
@@ -26,7 +26,7 @@ const withError: LintReport = {
     {
       ruleId: "conflict/binding",
       severity: "error",
-      message: "contradicts",
+      message: "contradicts\nnewline",
       range: {
         start: { file: "/tmp/CLAUDE.md", line: 3, column: 1 },
         end: { file: "/tmp/CLAUDE.md", line: 3, column: 40 },
@@ -56,5 +56,35 @@ describe("renderPretty", () => {
     const out = renderPretty(withError);
     expect(out).toContain("conflict/binding");
     expect(out).toContain("contradicts");
+  });
+});
+
+describe("renderGithub", () => {
+  it("emits GitHub annotation commands", () => {
+    const out = renderGithub(withError);
+    expect(out).toContain("::error file=/tmp/CLAUDE.md,line=3,col=1");
+    expect(out).toContain("title=conflict/binding");
+    expect(out).toContain("%0A");
+  });
+
+  it("emits nothing when report is clean", () => {
+    expect(renderGithub(emptyReport)).toBe("");
+  });
+});
+
+describe("renderReport", () => {
+  it("dispatches to json", () => {
+    const out = renderReport(withError, "json");
+    expect(out).toContain('"errorCount": 1');
+  });
+
+  it("dispatches to github", () => {
+    const out = renderReport(withError, "github");
+    expect(out).toContain("::error");
+  });
+
+  it("dispatches to pretty by default", () => {
+    const out = renderReport(withError, "pretty");
+    expect(out).toContain("conflict/binding");
   });
 });
