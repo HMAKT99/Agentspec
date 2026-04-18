@@ -3,6 +3,8 @@ export { extractRules } from "./extract.js";
 export { extractInlineCode } from "./inline-code.js";
 export type { InlineCodeRef } from "./inline-code.js";
 export { lint } from "./lint.js";
+export { applyFixes } from "./apply-fixes.js";
+export type { ApplyFixesResult } from "./apply-fixes.js";
 export type {
   BindingKind,
   ExtractedRule,
