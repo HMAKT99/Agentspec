@@ -11,6 +11,7 @@ const emptyReport: LintReport = {
       tree: { type: "root", children: [] } as any,
       frontmatter: {},
       extractedRules: [],
+      inlineCode: [],
       tokens: 0,
     },
   ],

@@ -18,9 +18,13 @@
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@agentspec/core": "workspace:*"
+    "@agentspec/core": "workspace:*",
+    "mdast-util-to-string": "^4.0.0",
+    "unist-util-visit": "^5.0.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/mdast": "^4.0.4",
     "@types/node": "^20.17.0"
   },
   "publishConfig": {

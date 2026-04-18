@@ -5,6 +5,7 @@ import { unified } from "unified";
 import { parse as parseYaml } from "yaml";
 
 import { extractRules } from "./extract.js";
+import { extractInlineCode } from "./inline-code.js";
 import type { Frontmatter, ParsedSpec } from "./types.js";
 
 const processor = unified().use(remarkParse).use(remarkFrontmatter, ["yaml"]);
@@ -13,9 +14,10 @@ export function parseSpec(file: string, raw: string): ParsedSpec {
   const tree = processor.parse(raw) as Root;
   const frontmatter = extractFrontmatter(tree);
   const extractedRules = extractRules(file, tree);
+  const inlineCode = extractInlineCode(file, tree);
   const tokens = approxTokenCount(raw);
 
-  return { file, raw, tree, frontmatter, extractedRules, tokens };
+  return { file, raw, tree, frontmatter, extractedRules, inlineCode, tokens };
 }
 
 function extractFrontmatter(tree: Root): Frontmatter {
