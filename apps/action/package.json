@@ -1,0 +1,26 @@
+{
+  "name": "@agentspec/action",
+  "version": "0.0.1",
+  "description": "AgentSpec GitHub Action — lint, score, and post sticky PR comments",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && ncc build dist-ts/main.js -o dist --minify --source-map",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "@agentspec/config": "workspace:*",
+    "@agentspec/core": "workspace:*",
+    "@agentspec/engine": "workspace:*",
+    "@agentspec/rules": "workspace:*",
+    "tinyglobby": "^0.2.10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@vercel/ncc": "^0.38.3"
+  }
+}
