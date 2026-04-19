@@ -31,9 +31,6 @@ export function Hero() {
           >
             GitHub
           </a>
-          <span className="font-mono text-sm text-[color:var(--color-fg-subtle)]">
-            npm i -D @mdpact/cli
-          </span>
         </div>
       </div>
     </section>
