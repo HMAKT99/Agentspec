@@ -1,16 +1,6 @@
 name: Deploy website to GitHub Pages
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "apps/web/**"
-      - "packages/core/**"
-      - "packages/rules/**"
-      - "packages/config/**"
-      - "pnpm-lock.yaml"
-      - "turbo.json"
-      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 # Only one deploy in flight at a time; cancel older queued runs.
