@@ -1,5 +1,5 @@
 ---
-"agentspec": patch
+"mdpact": patch
 ---
 
 Milestone 5: launch prep.

@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 import type { BehaviorReport } from "./types.js";
 
 export interface BehaviorRuleOptions {
@@ -22,7 +22,7 @@ export function createBehaviorRules(
       "Declared models diverge on how to interpret this spec at a task-level rate above the configured threshold.",
     category: "behavior",
     fixable: false,
-    docsUrl: "https://agentspec.dev/rules/behavior/divergence",
+    docsUrl: "https://mdpact.dev/rules/behavior/divergence",
 
     run(ctx): RuleResult[] {
       const out: RuleResult[] = [];
@@ -52,7 +52,7 @@ export function createBehaviorRules(
       "Models do not follow the spec often enough on this task — adherence below the configured threshold.",
     category: "behavior",
     fixable: false,
-    docsUrl: "https://agentspec.dev/rules/behavior/unfollowed",
+    docsUrl: "https://mdpact.dev/rules/behavior/unfollowed",
 
     run(ctx): RuleResult[] {
       const out: RuleResult[] = [];

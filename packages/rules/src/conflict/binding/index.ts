@@ -1,4 +1,4 @@
-import type { ExtractedRule, Rule, RuleResult } from "@agentspec/core";
+import type { ExtractedRule, Rule, RuleResult } from "@mdpact/core";
 
 export const bindingConflict: Rule = {
   id: "conflict/binding",
@@ -6,7 +6,7 @@ export const bindingConflict: Rule = {
   description: "Two binding directives directly contradict each other.",
   category: "conflict",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/conflict/binding",
+  docsUrl: "https://mdpact.dev/rules/conflict/binding",
 
   run(ctx): RuleResult[] {
     const bindings = ctx.spec.extractedRules.filter((r) => r.kind === "binding");

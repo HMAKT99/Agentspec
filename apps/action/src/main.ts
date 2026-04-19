@@ -5,9 +5,9 @@ import { promisify } from "node:util";
 
 import * as core from "@actions/core";
 import * as github from "@actions/github";
-import { type AgentSpecConfig, ConfigError, loadConfig } from "@agentspec/config";
-import { type LintReport, type ParsedSpec, lint, parseSpec } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import { ConfigError, type MdpactConfig, loadConfig } from "@mdpact/config";
+import { type LintReport, type ParsedSpec, lint, parseSpec } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 import { glob } from "tinyglobby";
 
 import { upsertStickyComment } from "./comment.js";
@@ -22,7 +22,7 @@ async function main(): Promise<void> {
   const postComment = (core.getInput("comment") || "true") === "true";
   const token = core.getInput("github-token");
 
-  let config: AgentSpecConfig;
+  let config: MdpactConfig;
   try {
     ({ config } = await loadConfig(cwd, configPath));
   } catch (err) {
@@ -38,7 +38,7 @@ async function main(): Promise<void> {
     config.specs.map((s) => s.path),
   );
   if (currentSpecs.length === 0) {
-    core.warning("No spec files matched the patterns in agentspec.config — nothing to lint.");
+    core.warning("No spec files matched the patterns in mdpact.config — nothing to lint.");
     return;
   }
 

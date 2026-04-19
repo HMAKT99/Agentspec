@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const BINDING_WORDS = ["always", "never", "must", "must not", "mustn't", "required", "shall"];
 const ADVISORY_WORDS = [
@@ -18,7 +18,7 @@ export const bindingAmbiguous: Rule = {
   description: "A single directive mixes binding and advisory language, leaving intent unclear.",
   category: "clarity",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/clarity/binding-ambiguous",
+  docsUrl: "https://mdpact.dev/rules/clarity/binding-ambiguous",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

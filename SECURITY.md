@@ -2,13 +2,13 @@
 
 ## Supported versions
 
-AgentSpec is pre-1.0. Only the latest release receives security fixes.
+mdpact is pre-1.0. Only the latest release receives security fixes.
 
 ## Reporting a vulnerability
 
 Do **not** open a public GitHub issue for security reports.
 
-Email the maintainers at `security@agentspec.dev` (placeholder — will be wired up before v1.0 launch). Include:
+Email the maintainers at `security@mdpact.dev` (placeholder — will be wired up before v1.0 launch). Include:
 
 - A description of the issue
 - Steps to reproduce
@@ -19,8 +19,8 @@ We aim to acknowledge reports within 3 business days and to coordinate a fix wit
 
 ## Scope
 
-- The `agentspec` CLI and all `@agentspec/*` packages
-- The AgentSpec GitHub Action (once shipped)
+- The `mdpact` CLI and all `@mdpact/*` packages
+- The mdpact GitHub Action (once shipped)
 - The hosted website and docs (once shipped)
 
 ## Out of scope

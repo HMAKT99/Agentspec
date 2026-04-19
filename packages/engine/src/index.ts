@@ -19,6 +19,8 @@ export { HeuristicClassifier } from "./classifier.js";
 export { loadTaskFile, taskSchema } from "./task-file.js";
 export { createBehaviorRules } from "./behavior-rules.js";
 export type { BehaviorRuleOptions } from "./behavior-rules.js";
+export { createDriftRules } from "./drift-rules.js";
+export type { DriftRuleOptions } from "./drift-rules.js";
 export type {
   BehaviorReport,
   CacheKey,

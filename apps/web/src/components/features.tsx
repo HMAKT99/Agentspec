@@ -9,17 +9,17 @@ const features: Feature[] = [
   {
     title: "Lint",
     body: "18+ rules spanning conflict detection, clarity heuristics, tool policy, compliance, and token budgets.",
-    tag: "agentspec lint",
+    tag: "mdpact lint",
   },
   {
     title: "Test",
     body: "Behavior-prediction engine runs tasks across Anthropic, OpenAI, and Google models with a USD budget guardrail.",
-    tag: "agentspec test",
+    tag: "mdpact test",
   },
   {
     title: "Score",
     body: "A single 0–100 score your PR comment can delta against the base branch, with deductions you can audit.",
-    tag: "agentspec score",
+    tag: "mdpact score",
   },
   {
     title: "CI",
@@ -29,7 +29,7 @@ const features: Feature[] = [
   {
     title: "Fix",
     body: "Safe-by-default auto-fixes with a --unsafe opt-in for transformational rewrites.",
-    tag: "agentspec fix",
+    tag: "mdpact fix",
   },
   {
     title: "Registry",

@@ -1,20 +1,12 @@
-import type { AgentSpecConfig } from "@agentspec/config";
-import {
-  AnthropicAdapter,
-  GoogleAdapter,
-  type ModelAdapter,
-  OpenAIAdapter,
-} from "@agentspec/engine";
+import type { MdpactConfig } from "@mdpact/config";
+import { AnthropicAdapter, GoogleAdapter, type ModelAdapter, OpenAIAdapter } from "@mdpact/engine";
 
 export interface ResolveOptions {
   /** Override subset of model ids the user wants to use (from --models flag). */
   filter?: string[];
 }
 
-export function resolveAdapters(
-  config: AgentSpecConfig,
-  opts: ResolveOptions = {},
-): ModelAdapter[] {
+export function resolveAdapters(config: MdpactConfig, opts: ResolveOptions = {}): ModelAdapter[] {
   const normalized = config.models.map(normalize);
   const filtered =
     opts.filter && opts.filter.length > 0
@@ -53,7 +45,7 @@ interface NormalizedModel {
   maxOutputTokens?: number;
 }
 
-function normalize(entry: AgentSpecConfig["models"][number]): NormalizedModel {
+function normalize(entry: MdpactConfig["models"][number]): NormalizedModel {
   if (typeof entry === "string") {
     const parts = entry.split(":");
     if (parts.length !== 2 || !parts[0] || !parts[1]) {

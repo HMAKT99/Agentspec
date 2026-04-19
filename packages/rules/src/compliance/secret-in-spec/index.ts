@@ -1,4 +1,4 @@
-import type { Rule, RuleResult, SourceRange } from "@agentspec/core";
+import type { Rule, RuleResult, SourceRange } from "@mdpact/core";
 
 interface Pattern {
   id: string;
@@ -30,7 +30,7 @@ export const secretInSpec: Rule = {
   description: "Likely API key or secret pattern found in the spec.",
   category: "compliance",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/compliance/secret-in-spec",
+  docsUrl: "https://mdpact.dev/rules/compliance/secret-in-spec",
 
   run(ctx): RuleResult[] {
     const results: RuleResult[] = [];

@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Rules",
   description:
-    "The AgentSpec rule catalog — every built-in check with its severity, category, and fix guidance.",
+    "The mdpact rule catalog — every built-in check with its severity, category, and fix guidance.",
 };
 
 export default function RulesIndexPage() {

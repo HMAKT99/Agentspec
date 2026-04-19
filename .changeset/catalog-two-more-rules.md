@@ -1,5 +1,5 @@
 ---
-"@agentspec/rules": minor
+"@mdpact/rules": minor
 ---
 
 Catalog expansion: the two rules from spec §6 that were deferred in M1.

@@ -1,7 +1,7 @@
 {
-  "name": "@agentspec/rules",
+  "name": "@mdpact/rules",
   "version": "0.0.1",
-  "description": "Built-in rule definitions for AgentSpec",
+  "description": "Built-in rule definitions for mdpact",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,7 @@
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@agentspec/core": "workspace:*",
+    "@mdpact/core": "workspace:*",
     "mdast-util-to-string": "^4.0.0",
     "unist-util-visit": "^5.0.0",
     "zod": "^3.23.8"

@@ -1,5 +1,5 @@
 ---
-"@agentspec/web": minor
+"@mdpact/web": minor
 ---
 
 Milestone 4 — part 2: `/rules` public catalog.

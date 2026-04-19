@@ -1,4 +1,4 @@
-import type { Rule, RuleResult, SourcePosition, SourceRange } from "@agentspec/core";
+import type { Rule, RuleResult, SourcePosition, SourceRange } from "@mdpact/core";
 
 const ACRONYM_PATTERN = /\b[A-Z]{3,}\b/g;
 const KNOWN_ACRONYMS = new Set([
@@ -50,7 +50,7 @@ export const undefinedTerm: Rule = {
   description: "An uncommon acronym appears only once in the spec with no definition.",
   category: "clarity",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/clarity/undefined-term",
+  docsUrl: "https://mdpact.dev/rules/clarity/undefined-term",
 
   run(ctx): RuleResult[] {
     const counts = new Map<string, number>();

@@ -1,13 +1,13 @@
-# AgentSpec
+# mdpact
 
 > **The missing layer between your markdown and your agents.**
 
-`agentspec` lints the markdown your agents read, so you stop shipping contradictions. Free, open-source, local-first.
+`mdpact` lints the markdown your agents read, so you stop shipping contradictions. Free, open-source, local-first.
 
 ```bash
-npm i -D @agentspec/cli @agentspec/config
-npx agentspec init
-npx agentspec lint
+npm i -D @mdpact/cli @mdpact/config
+npx mdpact init
+npx mdpact lint
 ```
 
 ## Why
@@ -22,7 +22,7 @@ The result:
 - A binding rule sitting 6,000 tokens deep where models silently ignore it
 - An API key pasted into the spec "temporarily"
 
-`agentspec` catches all of these statically. Then optionally runs your spec against a model (or three) and reports how consistently each one follows the rules you wrote.
+`mdpact` catches all of these statically. Then optionally runs your spec against a model (or three) and reports how consistently each one follows the rules you wrote.
 
 ## What's in the box
 
@@ -32,12 +32,12 @@ The result:
 - **Test** — behavior-prediction engine runs your spec against Anthropic / OpenAI / Google models, classifies each response (`refused` / `clarified` / `acted` / `deviated`), and reports per-model divergence. Hard USD budget guardrail.
 - **Diff** — lint the spec at a git ref, compare against your working tree, surface introduced / fixed diagnostics.
 - **CI** — GitHub Action posts a sticky PR comment with score delta, inline annotations, and fails the check on score regression.
-- **Playground** — paste a spec into the in-browser lint at [agentspec.dev/playground](https://agentspec.dev/playground). Nothing leaves your machine.
+- **Playground** — paste a spec into the in-browser lint at [mdpact.dev/playground](https://mdpact.dev/playground). Nothing leaves your machine.
 
 ## 60-second tour
 
 ```bash
-$ agentspec lint CLAUDE.md
+$ mdpact lint CLAUDE.md
 CLAUDE.md
   13:1   error    Binding rules contradict: "You must always commit before pushing." vs "Never commit before pushing."   conflict/binding
   41:3   warning  "best practices" — link the specific doc.                                                               clarity/vague-directive
@@ -47,7 +47,7 @@ CLAUDE.md
 ```
 
 ```bash
-$ agentspec score CLAUDE.md
+$ mdpact score CLAUDE.md
 Score: 81/100
 
   base                100
@@ -59,19 +59,19 @@ Score: 81/100
 ```
 
 ```bash
-$ agentspec explain conflict/binding
+$ mdpact explain conflict/binding
 conflict/binding
 category: conflict
 severity: error
 fixable:  no
-docs:     https://agentspec.dev/rules/conflict/binding
+docs:     https://mdpact.dev/rules/conflict/binding
 
 Two binding directives directly contradict each other.
 ```
 
 ## Privacy
 
-Your spec never leaves your machine unless you run `agentspec test`. That command calls the model APIs you declare. Cache keys are content hashes — no spec text is stored alongside the cache.
+Your spec never leaves your machine unless you run `mdpact test`. That command calls the model APIs you declare. Cache keys are content hashes — no spec text is stored alongside the cache.
 
 Everything else — `lint`, `score`, `fix`, `diff`, `explain`, `init` — runs entirely against local files.
 
@@ -79,13 +79,13 @@ Everything else — `lint`, `score`, `fix`, `diff`, `explain`, `init` — runs e
 
 | Package | Role |
 | --- | --- |
-| [`@agentspec/cli`](./packages/cli) | The `agentspec` binary |
-| [`@agentspec/core`](./packages/core) | Parser, rule runner, public types |
-| [`@agentspec/rules`](./packages/rules) | Built-in rule catalog |
-| [`@agentspec/config`](./packages/config) | Config loader (TS / JS / JSON / YAML) |
-| [`@agentspec/engine`](./packages/engine) | Behavior-prediction engine + adapters |
-| [`@agentspec/action`](./apps/action) | GitHub Action |
-| [`@agentspec/web`](./apps/web) | [agentspec.dev](https://agentspec.dev) |
+| [`@mdpact/cli`](./packages/cli) | The `mdpact` binary |
+| [`@mdpact/core`](./packages/core) | Parser, rule runner, public types |
+| [`@mdpact/rules`](./packages/rules) | Built-in rule catalog |
+| [`@mdpact/config`](./packages/config) | Config loader (TS / JS / JSON / YAML) |
+| [`@mdpact/engine`](./packages/engine) | Behavior-prediction engine + adapters |
+| [`@mdpact/action`](./apps/action) | GitHub Action |
+| [`@mdpact/web`](./apps/web) | [mdpact.dev](https://mdpact.dev) |
 
 ## GitHub Action
 

@@ -1,5 +1,5 @@
 ---
-"agentspec": patch
+"mdpact": patch
 ---
 
 Security posture: enable Dependabot.

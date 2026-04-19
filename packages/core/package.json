@@ -1,7 +1,7 @@
 {
-  "name": "@agentspec/core",
+  "name": "@mdpact/core",
   "version": "0.0.1",
-  "description": "Core parser, rule runner, and type definitions for AgentSpec",
+  "description": "Core parser, rule runner, and type definitions for mdpact",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

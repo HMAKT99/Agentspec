@@ -1,5 +1,5 @@
-import type { AgentSpecConfig } from "@agentspec/config";
-import type { LintReport, ParsedSpec } from "@agentspec/core";
+import type { MdpactConfig } from "@mdpact/config";
+import type { LintReport, ParsedSpec } from "@mdpact/core";
 
 export interface ScoreBreakdown {
   base: 100;
@@ -11,7 +11,7 @@ export interface ScoreBreakdown {
   total: number;
 }
 
-export function computeScore(report: LintReport, config: AgentSpecConfig): ScoreBreakdown {
+export function computeScore(report: LintReport, config: MdpactConfig): ScoreBreakdown {
   const errors = report.errorCount;
   const warnings = report.warningCount;
   const infos = report.infoCount;
@@ -39,7 +39,7 @@ export function computeScore(report: LintReport, config: AgentSpecConfig): Score
   };
 }
 
-function isTokenBudgetExceeded(specs: ParsedSpec[], config: AgentSpecConfig): boolean {
+function isTokenBudgetExceeded(specs: ParsedSpec[], config: MdpactConfig): boolean {
   const budget = config.budgets.tokens;
   if (typeof budget !== "number") return false;
   return specs.some((s) => s.tokens > budget);

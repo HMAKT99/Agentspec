@@ -1,4 +1,4 @@
-import type { Rule, RuleResult, SourceRange } from "@agentspec/core";
+import type { Rule, RuleResult, SourceRange } from "@mdpact/core";
 import type { Heading } from "mdast";
 import { toString as mdToString } from "mdast-util-to-string";
 import { visit } from "unist-util-visit";
@@ -9,7 +9,7 @@ export const duplicateHeading: Rule = {
   description: "The same heading text appears more than once in a spec.",
   category: "structure",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/structure/duplicate-heading",
+  docsUrl: "https://mdpact.dev/rules/structure/duplicate-heading",
 
   run(ctx): RuleResult[] {
     const seen = new Map<string, SourceRange>();

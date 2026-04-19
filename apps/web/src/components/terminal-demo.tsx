@@ -10,7 +10,7 @@ export function TerminalDemo() {
         </div>
         <pre className="overflow-x-auto px-5 py-5 leading-7">
           <code>
-            {`$ agentspec lint
+            {`$ mdpact lint
 CLAUDE.md
   13:1   error    Binding rules contradict: "You must always commit before pushing." vs "Never commit before pushing."   conflict/binding
   41:3   warning  "best practices" — link the specific doc.                                                               clarity/vague-directive

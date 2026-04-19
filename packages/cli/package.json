@@ -1,10 +1,10 @@
 {
-  "name": "@agentspec/cli",
+  "name": "@mdpact/cli",
   "version": "0.0.1",
-  "description": "AgentSpec CLI — lint, test, and score agent instruction files",
+  "description": "mdpact CLI — lint, test, and score agent instruction files",
   "type": "module",
   "bin": {
-    "agentspec": "./bin/agentspec.mjs"
+    "mdpact": "./bin/mdpact.mjs"
   },
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -21,10 +21,10 @@
     "test": "vitest run --coverage"
   },
   "dependencies": {
-    "@agentspec/config": "workspace:*",
-    "@agentspec/core": "workspace:*",
-    "@agentspec/engine": "workspace:*",
-    "@agentspec/rules": "workspace:*",
+    "@mdpact/config": "workspace:*",
+    "@mdpact/core": "workspace:*",
+    "@mdpact/engine": "workspace:*",
+    "@mdpact/rules": "workspace:*",
     "citty": "^0.1.6",
     "cli-table3": "^0.6.5",
     "picocolors": "^1.1.1",

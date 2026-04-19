@@ -1,14 +1,14 @@
 "use client";
 
-import { type LintReport, lint, parseSpec } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import { type LintReport, lint, parseSpec } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 import { useEffect, useMemo, useState } from "react";
 
 interface Props {
   initialSpec: string;
 }
 
-const LS_KEY = "agentspec-playground-spec";
+const LS_KEY = "mdpact-playground-spec";
 
 export function PlaygroundShell({ initialSpec }: Props) {
   const [spec, setSpec] = useState<string>(() => hydrateInitial(initialSpec));

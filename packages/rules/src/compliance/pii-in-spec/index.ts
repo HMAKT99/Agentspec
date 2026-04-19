@@ -1,4 +1,4 @@
-import type { Rule, RuleResult, SourceRange } from "@agentspec/core";
+import type { Rule, RuleResult, SourceRange } from "@mdpact/core";
 
 interface Pattern {
   id: string;
@@ -42,7 +42,7 @@ export const piiInSpec: Rule = {
   description: "Likely PII (email, SSN, phone, card) appears in spec text.",
   category: "compliance",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/compliance/pii-in-spec",
+  docsUrl: "https://mdpact.dev/rules/compliance/pii-in-spec",
 
   run(ctx): RuleResult[] {
     const results: RuleResult[] = [];

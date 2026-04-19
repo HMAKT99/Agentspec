@@ -1,4 +1,4 @@
-import type { ExtractedRule, Rule, RuleResult } from "@agentspec/core";
+import type { ExtractedRule, Rule, RuleResult } from "@mdpact/core";
 
 const VAGUE_CONDITIONS = [
   "sometimes",
@@ -21,7 +21,7 @@ export const bindingException: Rule = {
     "A binding rule is immediately followed by an exception whose trigger is vague, undermining the binding.",
   category: "conflict",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/conflict/binding-exception",
+  docsUrl: "https://mdpact.dev/rules/conflict/binding-exception",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

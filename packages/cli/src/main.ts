@@ -9,7 +9,7 @@ import { testCommand } from "./commands/test.js";
 
 export const main = defineCommand({
   meta: {
-    name: "agentspec",
+    name: "mdpact",
     version: "0.0.1",
     description: "Lint, test, and score agent instruction files",
   },

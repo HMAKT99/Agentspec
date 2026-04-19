@@ -1,8 +1,8 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Rule } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import type { Rule } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

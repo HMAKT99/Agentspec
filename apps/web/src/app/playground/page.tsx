@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Playground",
   description:
-    "Paste an agent spec and see AgentSpec diagnostics in your browser. No network, no uploads.",
+    "Paste an agent spec and see mdpact diagnostics in your browser. No network, no uploads.",
 };
 
 const SAMPLE = `---

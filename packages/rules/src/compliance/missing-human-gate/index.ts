@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const SENSITIVE_VERBS = [
   "deploy",
@@ -40,7 +40,7 @@ export const missingHumanGate: Rule = {
   description: "A binding rule permits a high-impact action without requiring a human in the loop.",
   category: "compliance",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/compliance/missing-human-gate",
+  docsUrl: "https://mdpact.dev/rules/compliance/missing-human-gate",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

@@ -1,4 +1,4 @@
-import type { ExtractedRule, Rule, RuleResult } from "@agentspec/core";
+import type { ExtractedRule, Rule, RuleResult } from "@mdpact/core";
 
 export const scopeOverlap: Rule = {
   id: "conflict/scope-overlap",
@@ -7,7 +7,7 @@ export const scopeOverlap: Rule = {
     "Two rules cover the same verb+object but disagree on strength (binding vs advisory).",
   category: "conflict",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/conflict/scope-overlap",
+  docsUrl: "https://mdpact.dev/rules/conflict/scope-overlap",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

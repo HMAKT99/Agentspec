@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://agentspec.dev"),
+  metadataBase: new URL("https://mdpact.dev"),
   title: {
-    default: "AgentSpec — the missing layer between your markdown and your agents",
-    template: "%s · AgentSpec",
+    default: "mdpact — the missing layer between your markdown and your agents",
+    template: "%s · mdpact",
   },
   description:
-    "AgentSpec lints, tests, and scores CLAUDE.md / AGENTS.md / MCP tool specs so you stop shipping contradictions to your agents.",
+    "mdpact lints, tests, and scores CLAUDE.md / AGENTS.md / MCP tool specs so you stop shipping contradictions to your agents.",
   openGraph: {
-    title: "AgentSpec",
+    title: "mdpact",
     description: "Lint, test, and score agent instruction files.",
     type: "website",
   },

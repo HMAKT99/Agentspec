@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const DESTRUCTIVE_VERBS = [
   "delete",
@@ -46,7 +46,7 @@ export const destructiveNoConfirm: Rule = {
     "A destructive action is described without any confirmation / human-gate language nearby.",
   category: "tools",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/tools/destructive-no-confirm",
+  docsUrl: "https://mdpact.dev/rules/tools/destructive-no-confirm",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

@@ -2,9 +2,9 @@ import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
 import { relative, resolve } from "node:path";
 import { promisify } from "node:util";
-import { type AgentSpecConfig, ConfigError, loadConfig } from "@agentspec/config";
-import { type LintReport, type RuleResult, lint, parseSpec } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import { ConfigError, type MdpactConfig, loadConfig } from "@mdpact/config";
+import { type LintReport, type RuleResult, lint, parseSpec } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 import { defineCommand } from "citty";
 import pc from "picocolors";
 
@@ -32,7 +32,7 @@ export const diffCommand = defineCommand({
     },
     config: {
       type: "string",
-      description: "Path to agentspec config file",
+      description: "Path to mdpact config file",
     },
     format: {
       type: "string",
@@ -43,7 +43,7 @@ export const diffCommand = defineCommand({
   async run({ args }) {
     const cwd = resolve(args.cwd);
 
-    let config: AgentSpecConfig;
+    let config: MdpactConfig;
     try {
       ({ config } = await loadConfig(cwd, args.config));
     } catch (err) {
@@ -136,7 +136,7 @@ function buildDiff(base: LintReport, current: LintReport): DiffBuckets {
 
 function renderMarkdown(diff: DiffBuckets, ref: string): string {
   const out: string[] = [];
-  out.push(`# AgentSpec diff vs \`${ref}\``);
+  out.push(`# mdpact diff vs \`${ref}\``);
   out.push("");
 
   out.push(
