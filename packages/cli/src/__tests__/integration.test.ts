@@ -25,9 +25,14 @@ async function mdpact(
   args: string[],
   cwd: string,
 ): Promise<{ stdout: string; stderr: string; code: number }> {
+  // Strip color env so picocolors emits plain text regardless of where this
+  // runs (GitHub Actions runners set FORCE_COLOR=1 and would otherwise inject
+  // ANSI escape sequences that break our string-contains assertions).
+  const env = { ...process.env, NO_COLOR: "1", FORCE_COLOR: "0" };
   try {
     const { stdout, stderr } = await run("node", [BIN, ...args], {
       cwd,
+      env,
       timeout: 30_000,
       maxBuffer: 10 * 1024 * 1024,
     });
