@@ -42,14 +42,16 @@ const features: Feature[] = [
 export function Features() {
   return (
     <section className="pb-16">
-      <h2 className="mb-8 text-2xl font-semibold tracking-tight">Everything the CLI does.</h2>
-      <div className="grid gap-px overflow-hidden rounded-[var(--radius)] border border-[color:var(--color-line)] bg-[color:var(--color-line)] sm:grid-cols-2 lg:grid-cols-3">
+      <h2 className="font-display mb-8 text-4xl font-normal tracking-tight text-[color:var(--color-fg)]">
+        Everything the CLI does
+      </h2>
+      <div className="grid gap-px overflow-hidden rounded-[var(--radius)] border border-[color:var(--color-line-strong)] bg-[color:var(--color-line-strong)] sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
-          <div key={f.title} className="flex flex-col gap-2 bg-[color:var(--color-bg)] p-6">
+          <div key={f.title} className="flex flex-col gap-2 bg-[color:var(--color-bg-alt)] p-6">
             <div className="flex items-baseline justify-between">
-              <h3 className="text-base font-semibold">{f.title}</h3>
+              <h3 className="font-display text-2xl text-[color:var(--color-fg)]">{f.title}</h3>
               <span
-                className={`font-mono text-xs ${
+                className={`font-mono text-xs uppercase tracking-wider ${
                   f.coming
                     ? "text-[color:var(--color-fg-subtle)]"
                     : "text-[color:var(--color-accent)]"
