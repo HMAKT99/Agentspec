@@ -12,10 +12,10 @@ https://github.com/HMAKT99/Agentspec
 **2/**
 The wedge is a linter. 18 rules across conflict / clarity / tools / structure / tokens / compliance. Every rule has docs + auto-tested good/bad fixtures.
 
-Run it locally: `npm i -D @agentspec/cli && npx agentspec lint`
+Run it locally: `npm i -D @mdpact/cli && npx mdpact lint`
 
 **3/**
-The moat is behavior prediction. Point AgentSpec at Anthropic / OpenAI / Google, run your spec against real tasks, and get per-model divergence back.
+The moat is behavior prediction. Point mdpact at Anthropic / OpenAI / Google, run your spec against real tasks, and get per-model divergence back.
 
 Hard USD budget guardrail. Results cached by content hash. Your spec never leaves your machine without opt-in.
 
@@ -27,6 +27,6 @@ OSS linter is free forever. Hosted registry + compliance are paid. Fair deal.
 **5/**
 Try it in your browser — no signup, runs entirely client-side:
 
-🔗 https://agentspec.dev/playground
+🔗 https://mdpact.dev/playground
 
 Paste your CLAUDE.md. We think you'll be surprised.

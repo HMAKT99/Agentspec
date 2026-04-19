@@ -1,7 +1,7 @@
 {
-  "name": "@agentspec/action",
+  "name": "@mdpact/action",
   "version": "0.0.1",
-  "description": "AgentSpec GitHub Action — lint, score, and post sticky PR comments",
+  "description": "mdpact GitHub Action — lint, score, and post sticky PR comments",
   "private": true,
   "type": "module",
   "main": "./dist/index.js",
@@ -13,10 +13,10 @@
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/github": "^6.0.0",
-    "@agentspec/config": "workspace:*",
-    "@agentspec/core": "workspace:*",
-    "@agentspec/engine": "workspace:*",
-    "@agentspec/rules": "workspace:*",
+    "@mdpact/config": "workspace:*",
+    "@mdpact/core": "workspace:*",
+    "@mdpact/engine": "workspace:*",
+    "@mdpact/rules": "workspace:*",
     "tinyglobby": "^0.2.10"
   },
   "devDependencies": {

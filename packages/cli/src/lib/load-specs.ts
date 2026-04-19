@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
-import type { AgentSpecConfig } from "@agentspec/config";
-import { type ParsedSpec, parseSpec } from "@agentspec/core";
+import type { MdpactConfig } from "@mdpact/config";
+import { type ParsedSpec, parseSpec } from "@mdpact/core";
 import { glob } from "tinyglobby";
 
 export interface LoadedSpecs {
@@ -11,7 +11,7 @@ export interface LoadedSpecs {
 
 export async function loadSpecs(
   cwd: string,
-  config: AgentSpecConfig,
+  config: MdpactConfig,
   explicitPaths: string[] = [],
 ): Promise<LoadedSpecs> {
   const patterns = explicitPaths.length > 0 ? explicitPaths : config.specs.map((s) => s.path);

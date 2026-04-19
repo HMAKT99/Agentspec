@@ -1,9 +1,9 @@
-import type { AgentSpecConfig } from "@agentspec/config";
-import type { LintReport, ParsedSpec } from "@agentspec/core";
+import type { MdpactConfig } from "@mdpact/config";
+import type { LintReport, ParsedSpec } from "@mdpact/core";
 import { describe, expect, it } from "vitest";
 import { computeScore } from "./score.js";
 
-const baseConfig: AgentSpecConfig = {
+const baseConfig: MdpactConfig = {
   specs: [],
   rules: {},
   ruleOptions: {},

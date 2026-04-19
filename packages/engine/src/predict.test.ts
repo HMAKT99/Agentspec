@@ -35,7 +35,7 @@ describe("predictBehavior", () => {
   it("uses the cache on a second call", async () => {
     let dir = "";
     try {
-      dir = mkdtempSync(join(tmpdir(), "agentspec-cache-"));
+      dir = mkdtempSync(join(tmpdir(), "mdpact-cache-"));
       const cache = new DiskCache(dir);
       const adapter = new MockAdapter({ id: "mock/det" });
 

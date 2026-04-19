@@ -1,4 +1,4 @@
-name: AgentSpec
+name: mdpact
 
 on:
   pull_request:
@@ -6,12 +6,12 @@ on:
       - "CLAUDE.md"
       - "AGENTS.md"
       - "**/*.mcp.md"
-      - "agentspec.config.*"
+      - "mdpact.config.*"
   push:
     branches: [main]
 
 jobs:
-  agentspec:
+  mdpact:
     runs-on: ubuntu-latest
     permissions:
       contents: read

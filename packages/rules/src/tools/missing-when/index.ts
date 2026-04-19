@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const WHEN_CUES = [
   "when",
@@ -39,7 +39,7 @@ export const missingWhen: Rule = {
   description: "A tool is referenced without guidance on when to invoke it.",
   category: "tools",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/tools/missing-when",
+  docsUrl: "https://mdpact.dev/rules/tools/missing-when",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

@@ -1,4 +1,4 @@
-import { lint, parseSpec } from "@agentspec/core";
+import { lint, parseSpec } from "@mdpact/core";
 import { describe, expect, it } from "vitest";
 import { crossToolPolicy } from "./index.js";
 

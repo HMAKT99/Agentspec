@@ -1,4 +1,4 @@
-import type { Rule, RuleContext, RuleResult } from "@agentspec/core";
+import type { Rule, RuleContext, RuleResult } from "@mdpact/core";
 import type { Heading } from "mdast";
 import { visit } from "unist-util-visit";
 import { z } from "zod";
@@ -18,7 +18,7 @@ export const noSections: Rule<Options> = {
   description: "Long specs should be broken into sections with H2+ headings.",
   category: "structure",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/structure/no-sections",
+  docsUrl: "https://mdpact.dev/rules/structure/no-sections",
   schema: optionsSchema,
 
   run(ctx: RuleContext<Options>): RuleResult[] {

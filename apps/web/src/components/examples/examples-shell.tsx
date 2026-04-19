@@ -121,7 +121,7 @@ function OutputCard({
     <div className="overflow-hidden rounded-[var(--radius)] border border-[color:var(--color-line)]">
       <div className="flex items-center justify-between border-b border-[color:var(--color-line)] bg-[color:var(--color-bg-alt)] px-4 py-2 text-xs font-medium uppercase tracking-wider text-[color:var(--color-fg-muted)]">
         <span>Output</span>
-        <span className="font-mono text-[10px] normal-case tracking-normal">$ agentspec lint</span>
+        <span className="font-mono text-[10px] normal-case tracking-normal">$ mdpact lint</span>
       </div>
 
       <div className="bg-[color:var(--color-bg)] px-4 py-4">

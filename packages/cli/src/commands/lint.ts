@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
-import { type AgentSpecConfig, ConfigError, loadConfig } from "@agentspec/config";
-import { lint } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import { ConfigError, type MdpactConfig, loadConfig } from "@mdpact/config";
+import { lint } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 import { defineCommand } from "citty";
 
 import { type OutputFormat, renderReport } from "../format/index.js";
@@ -28,7 +28,7 @@ export const lintCommand = defineCommand({
     },
     config: {
       type: "string",
-      description: "Path to agentspec config file",
+      description: "Path to mdpact config file",
     },
     cwd: {
       type: "string",
@@ -44,7 +44,7 @@ export const lintCommand = defineCommand({
     const cwd = resolve(args.cwd);
     const format = parseFormat(args.format);
 
-    let config: AgentSpecConfig;
+    let config: MdpactConfig;
     try {
       ({ config } = await loadConfig(cwd, args.config));
     } catch (err) {

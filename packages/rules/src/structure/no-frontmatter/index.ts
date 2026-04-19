@@ -1,4 +1,4 @@
-import type { Fix, Rule, RuleResult } from "@agentspec/core";
+import type { Fix, Rule, RuleResult } from "@mdpact/core";
 
 const DEFAULT_FRONTMATTER = `---
 version: 1
@@ -13,7 +13,7 @@ export const noFrontmatter: Rule = {
   description: "Specs should declare at least version and owner metadata in YAML frontmatter.",
   category: "structure",
   fixable: "unsafe",
-  docsUrl: "https://agentspec.dev/rules/structure/no-frontmatter",
+  docsUrl: "https://mdpact.dev/rules/structure/no-frontmatter",
 
   run(ctx): RuleResult[] {
     if (Object.keys(ctx.spec.frontmatter).length > 0) return [];

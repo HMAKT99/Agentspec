@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for your interest in AgentSpec. The project is in very early development; expect rough edges.
+Thanks for your interest in mdpact. The project is in very early development; expect rough edges.
 
 ## Prerequisites
 

@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const VAGUE_PHRASES = [
   "our standards",
@@ -23,7 +23,7 @@ export const vagueDirective: Rule = {
   description: "A rule references vague authority (standards, guidelines) without a link.",
   category: "clarity",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/clarity/vague-directive",
+  docsUrl: "https://mdpact.dev/rules/clarity/vague-directive",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

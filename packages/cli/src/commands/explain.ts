@@ -1,4 +1,4 @@
-import { allRules } from "@agentspec/rules";
+import { allRules } from "@mdpact/rules";
 import { defineCommand } from "citty";
 import pc from "picocolors";
 

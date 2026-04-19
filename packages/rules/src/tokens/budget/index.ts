@@ -1,4 +1,4 @@
-import type { Rule, RuleContext, RuleResult } from "@agentspec/core";
+import type { Rule, RuleContext, RuleResult } from "@mdpact/core";
 import { z } from "zod";
 
 const optionsSchema = z
@@ -15,7 +15,7 @@ export const tokensBudget: Rule<Options> = {
   description: "Spec exceeds the configured token budget.",
   category: "tokens",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/tokens/budget",
+  docsUrl: "https://mdpact.dev/rules/tokens/budget",
   schema: optionsSchema,
 
   run(ctx: RuleContext<Options>): RuleResult[] {

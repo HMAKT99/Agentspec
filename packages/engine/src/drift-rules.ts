@@ -1,4 +1,4 @@
-import type { Rule, RuleResult, SourceRange } from "@agentspec/core";
+import type { Rule, RuleResult, SourceRange } from "@mdpact/core";
 import type { BehaviorReport, Outcome, RunRecord } from "./types.js";
 
 export interface DriftRuleOptions {
@@ -48,7 +48,7 @@ export function createDriftRules(report: BehaviorReport, opts: DriftRuleOptions 
       "Spec claims a behavior the agent does not reliably follow in practice (observed adherence below threshold).",
     category: "behavior",
     fixable: false,
-    docsUrl: "https://agentspec.dev/rules/behavior/drift",
+    docsUrl: "https://mdpact.dev/rules/behavior/drift",
 
     run(ctx): RuleResult[] {
       const out: RuleResult[] = [];

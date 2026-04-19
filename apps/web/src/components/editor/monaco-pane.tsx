@@ -44,10 +44,10 @@ export function MonacoPane({ value, onChange, diagnostics, onMount }: Props) {
       endLineNumber: d.endLine,
       endColumn: Math.max(d.endColumn, d.column + 1),
       message: `${d.ruleId}: ${d.message}`,
-      source: "agentspec",
+      source: "mdpact",
     }));
 
-    monaco.editor.setModelMarkers(model, "agentspec", markers);
+    monaco.editor.setModelMarkers(model, "mdpact", markers);
   }, [diagnostics]);
 
   return (

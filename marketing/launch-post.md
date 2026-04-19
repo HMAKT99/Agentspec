@@ -35,7 +35,7 @@ Section A says "use `docker push` for local testing". Section B says "never run 
 
 The shared shape here: markdown became the lingua franca of agent instructions by accident, and there's no lint for it.
 
-So we built one. [`agentspec`](https://github.com/HMAKT99/Agentspec) is the missing layer:
+So we built one. [`mdpact`](https://github.com/HMAKT99/Agentspec) is the missing layer:
 
 - **Lint** — 18 rules across conflict / clarity / tools / structure / tokens / compliance
 - **Score** — a single 0–100 number you can gate PRs against
@@ -43,6 +43,6 @@ So we built one. [`agentspec`](https://github.com/HMAKT99/Agentspec) is the miss
 - **Test** — behavior-prediction engine runs your spec across three model families, classifies outcomes, reports divergence
 - **CI** — GitHub Action with sticky PR comment and score delta vs base
 
-Free, OSS, MIT. The CLI never touches the network unless you opt into `agentspec test`. Hosted registry + enterprise compliance are on the roadmap and paid; the linter is free forever.
+Free, OSS, MIT. The CLI never touches the network unless you opt into `mdpact test`. Hosted registry + enterprise compliance are on the roadmap and paid; the linter is free forever.
 
-Try it in your browser: [agentspec.dev/playground](https://agentspec.dev/playground). Paste your `CLAUDE.md`. We think you'll be surprised.
+Try it in your browser: [mdpact.dev/playground](https://mdpact.dev/playground). Paste your `CLAUDE.md`. We think you'll be surprised.

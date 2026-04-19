@@ -1,4 +1,4 @@
-import type { ExtractedRule, Rule, RuleResult } from "@agentspec/core";
+import type { ExtractedRule, Rule, RuleResult } from "@mdpact/core";
 
 /**
  * structure/dead-rule — a later rule is subsumed by an earlier rule of greater
@@ -14,7 +14,7 @@ export const deadRule: Rule = {
   description: "A later advisory directive is subsumed by an earlier binding directive.",
   category: "structure",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/structure/dead-rule",
+  docsUrl: "https://mdpact.dev/rules/structure/dead-rule",
 
   run(ctx): RuleResult[] {
     const rules = ctx.spec.extractedRules;

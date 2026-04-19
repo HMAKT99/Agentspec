@@ -1,5 +1,5 @@
 import { relative } from "node:path";
-import type { LintReport, RuleResult } from "@agentspec/core";
+import type { LintReport, RuleResult } from "@mdpact/core";
 import pc from "picocolors";
 
 export type OutputFormat = "pretty" | "json" | "github";

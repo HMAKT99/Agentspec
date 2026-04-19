@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const PRONOUNS = ["it", "this", "that", "these", "those", "they", "them"];
 
@@ -8,7 +8,7 @@ export const pronounDrift: Rule = {
   description: "A directive starts with a pronoun whose antecedent is outside the sentence.",
   category: "clarity",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/clarity/pronoun-drift",
+  docsUrl: "https://mdpact.dev/rules/clarity/pronoun-drift",
 
   run(ctx): RuleResult[] {
     const out: RuleResult[] = [];

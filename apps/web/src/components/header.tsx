@@ -10,7 +10,7 @@ export function Header() {
             className="inline-block h-5 w-5 rounded-[4px]"
             style={{ background: "var(--color-accent)" }}
           />
-          agentspec
+          mdpact
         </Link>
         <nav className="flex items-center gap-6 text-sm text-[color:var(--color-fg-muted)]">
           <Link href="/docs" className="hover:text-[color:var(--color-fg)]">

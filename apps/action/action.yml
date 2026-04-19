@@ -1,13 +1,13 @@
-name: "AgentSpec"
+name: "mdpact"
 description: "Lint, test, and score agent instruction files (CLAUDE.md, AGENTS.md, MCP specs)"
-author: "AgentSpec contributors"
+author: "mdpact contributors"
 branding:
   icon: "check-square"
   color: "orange"
 
 inputs:
   config:
-    description: "Path to agentspec config file (default: auto-discover)"
+    description: "Path to mdpact config file (default: auto-discover)"
     required: false
   fail-below:
     description: "Fail the check if the score drops below this value (0-100)"

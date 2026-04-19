@@ -1,4 +1,4 @@
-import type { Rule, RuleContext, RuleResult } from "@agentspec/core";
+import type { Rule, RuleContext, RuleResult } from "@mdpact/core";
 import { z } from "zod";
 
 const optionsSchema = z
@@ -45,7 +45,7 @@ export const unknownTool: Rule<Options> = {
   description: "A backticked tool is referenced but not in the declared allowed list.",
   category: "tools",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/tools/unknown-tool",
+  docsUrl: "https://mdpact.dev/rules/tools/unknown-tool",
   schema: optionsSchema,
 
   run(ctx: RuleContext<Options>): RuleResult[] {

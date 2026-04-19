@@ -1,4 +1,4 @@
-import type { Rule, RuleResult } from "@agentspec/core";
+import type { Rule, RuleResult } from "@mdpact/core";
 
 const RESTRICT_CUES = [
   "never",
@@ -29,7 +29,7 @@ export const toolPolicy: Rule = {
   description: "A tool is described as allowed in one place and restricted in another.",
   category: "conflict",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/conflict/tool-policy",
+  docsUrl: "https://mdpact.dev/rules/conflict/tool-policy",
 
   run(ctx): RuleResult[] {
     const byTool = new Map<

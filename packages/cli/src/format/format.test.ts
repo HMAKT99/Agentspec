@@ -1,4 +1,4 @@
-import type { LintReport } from "@agentspec/core";
+import type { LintReport } from "@mdpact/core";
 import { describe, expect, it } from "vitest";
 import { renderGithub, renderJson, renderPretty, renderReport } from "./index.js";
 

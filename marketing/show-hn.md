@@ -2,7 +2,7 @@
 
 ## Title
 
-Show HN: AgentSpec – Lint, test, and score your CLAUDE.md / AGENTS.md
+Show HN: mdpact – Lint, test, and score your CLAUDE.md / AGENTS.md
 
 ## Body
 
@@ -12,12 +12,12 @@ Every Claude Code, Cursor, and MCP user ends up with a markdown file that define
 
 We looked at a bunch of real specs and kept seeing the same failure modes: binding rules that contradict, destructive actions without a confirmation gate, tool policy that disagrees with itself across sections, binding rules buried deep where models stop paying attention, secrets pasted in "temporarily".
 
-AgentSpec lints for all of that statically. Then — optionally — runs your spec across Anthropic / OpenAI / Google models, classifies each response, and reports how consistently each model follows what you wrote.
+mdpact lints for all of that statically. Then — optionally — runs your spec across Anthropic / OpenAI / Google models, classifies each response, and reports how consistently each model follows what you wrote.
 
 - Repo: https://github.com/HMAKT99/Agentspec
-- Playground (no signup, runs in your browser): https://agentspec.dev/playground
-- Docs: https://agentspec.dev/docs
-- Rule catalog: https://agentspec.dev/rules
+- Playground (no signup, runs in your browser): https://mdpact.dev/playground
+- Docs: https://mdpact.dev/docs
+- Rule catalog: https://mdpact.dev/rules
 
 Happy to answer questions about the architecture (TypeScript monorepo, unified + remark for parsing, three vendor SDKs for the engine, cost-bounded cache), the rule heuristics, or why we chose to make the CLI strictly local-first.
 

@@ -64,5 +64,5 @@ export const configSchema = z
   })
   .strict();
 
-export type AgentSpecConfig = z.infer<typeof configSchema>;
-export type AgentSpecConfigInput = z.input<typeof configSchema>;
+export type MdpactConfig = z.infer<typeof configSchema>;
+export type MdpactConfigInput = z.input<typeof configSchema>;

@@ -8,7 +8,7 @@ describe("loadTaskFile", () => {
   let dir: string;
 
   beforeEach(() => {
-    dir = mkdtempSync(join(tmpdir(), "agentspec-tasks-"));
+    dir = mkdtempSync(join(tmpdir(), "mdpact-tasks-"));
   });
 
   afterEach(() => {

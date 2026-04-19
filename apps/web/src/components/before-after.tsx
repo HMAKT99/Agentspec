@@ -6,7 +6,7 @@ export function BeforeAfter() {
       </h2>
       <p className="mb-8 max-w-2xl text-[color:var(--color-fg-muted)]">
         Two rules that look fine in isolation become undefined behavior when the agent sees them
-        side by side. AgentSpec flags the ambiguity the first time you run it.
+        side by side. mdpact flags the ambiguity the first time you run it.
       </p>
       <div className="grid gap-4 sm:grid-cols-2">
         <Card label="Before" tone="error">

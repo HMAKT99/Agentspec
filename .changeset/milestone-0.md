@@ -1,11 +1,11 @@
 ---
-"@agentspec/core": minor
-"@agentspec/rules": minor
-"@agentspec/cli": minor
+"@mdpact/core": minor
+"@mdpact/rules": minor
+"@mdpact/cli": minor
 ---
 
 Initial Milestone 0 scaffolding.
 
-- `@agentspec/core`: parser, rule runner, type definitions, sentence-level rule extractor (naive classifier).
-- `@agentspec/rules`: `conflict/binding` — flags two binding directives that contradict.
-- `@agentspec/cli`: `agentspec lint` command with `pretty` and `json` output formats.
+- `@mdpact/core`: parser, rule runner, type definitions, sentence-level rule extractor (naive classifier).
+- `@mdpact/rules`: `conflict/binding` — flags two binding directives that contradict.
+- `@mdpact/cli`: `mdpact lint` command with `pretty` and `json` output formats.

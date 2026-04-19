@@ -1,4 +1,4 @@
-import type { Rule } from "@agentspec/core";
+import type { Rule } from "@mdpact/core";
 
 import { bindingException } from "./conflict/binding-exception/index.js";
 import { bindingConflict } from "./conflict/binding/index.js";

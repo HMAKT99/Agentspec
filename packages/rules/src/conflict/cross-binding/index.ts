@@ -1,4 +1,4 @@
-import type { ExtractedRule, Rule, RuleResult } from "@agentspec/core";
+import type { ExtractedRule, Rule, RuleResult } from "@mdpact/core";
 
 /**
  * conflict/cross-binding — two binding directives in *different* spec files
@@ -14,7 +14,7 @@ export const crossBinding: Rule = {
   description: "Binding directives in different spec files contradict each other.",
   category: "conflict",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/conflict/cross-binding",
+  docsUrl: "https://mdpact.dev/rules/conflict/cross-binding",
 
   run(ctx): RuleResult[] {
     if (ctx.allSpecs.length < 2) return [];

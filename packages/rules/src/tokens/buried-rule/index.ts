@@ -1,4 +1,4 @@
-import type { Rule, RuleContext, RuleResult } from "@agentspec/core";
+import type { Rule, RuleContext, RuleResult } from "@mdpact/core";
 import { z } from "zod";
 
 const optionsSchema = z
@@ -17,7 +17,7 @@ export const buriedRule: Rule<Options> = {
   description: "A binding rule sits below the attention threshold — models may skip it.",
   category: "tokens",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/tokens/buried-rule",
+  docsUrl: "https://mdpact.dev/rules/tokens/buried-rule",
   schema: optionsSchema,
 
   run(ctx: RuleContext<Options>): RuleResult[] {

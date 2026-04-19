@@ -26,7 +26,7 @@ interface Props {
   initialSpec: string;
 }
 
-const LS_KEY = "agentspec-editor-spec";
+const LS_KEY = "mdpact-editor-spec";
 
 export function EditorShell({ initialSpec }: Props) {
   const [text, setText] = useState<string>(() => hydrateInitial(initialSpec));

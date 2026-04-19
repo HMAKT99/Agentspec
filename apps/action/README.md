@@ -1,11 +1,11 @@
-# AgentSpec GitHub Action
+# mdpact GitHub Action
 
-Run AgentSpec on every pull request. Emits inline annotations, posts a sticky PR comment with score + diagnostics, and fails the check when the score drops below a configured threshold.
+Run mdpact on every pull request. Emits inline annotations, posts a sticky PR comment with score + diagnostics, and fails the check when the score drops below a configured threshold.
 
 ## Minimal workflow
 
 ```yaml
-name: AgentSpec
+name: mdpact
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ on:
     branches: [main]
 
 jobs:
-  agentspec:
+  mdpact:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -32,7 +32,7 @@ jobs:
 
 | Name | Description | Default |
 | --- | --- | --- |
-| `config` | Path to `agentspec.config.*` (auto-discovered if omitted) | — |
+| `config` | Path to `mdpact.config.*` (auto-discovered if omitted) | — |
 | `fail-below` | Fail the check if score drops below this value | `70` |
 | `run-behavior-tests` | Run the behavior-prediction engine (costs API credits) | `false` |
 | `models` | Comma-separated subset of models to run | — |

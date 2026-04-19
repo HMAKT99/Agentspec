@@ -12,5 +12,5 @@ export {
   severitySchema,
   specInputSchema,
 } from "./schema.js";
-export type { AgentSpecConfig, AgentSpecConfigInput } from "./schema.js";
+export type { MdpactConfig, MdpactConfigInput } from "./schema.js";
 export type { LoadResult } from "./load.js";

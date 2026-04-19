@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { type LintConfig, lint, parseSpec } from "@agentspec/core";
+import { type LintConfig, lint, parseSpec } from "@mdpact/core";
 import { describe, expect, it } from "vitest";
 
 import { allRules } from "./index.js";

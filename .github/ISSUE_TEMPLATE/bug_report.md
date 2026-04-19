@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a defect in AgentSpec
+about: Report a defect in mdpact
 labels: bug
 ---
 
@@ -16,6 +16,6 @@ labels: bug
 
 ## Environment
 
-- `agentspec` version:
+- `mdpact` version:
 - Node version:
 - OS:

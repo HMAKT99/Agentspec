@@ -8,7 +8,7 @@ describe("loadConfig", () => {
   let dir: string;
 
   beforeEach(() => {
-    dir = mkdtempSync(join(tmpdir(), "agentspec-config-"));
+    dir = mkdtempSync(join(tmpdir(), "mdpact-config-"));
   });
 
   afterEach(() => {
@@ -36,10 +36,10 @@ describe("loadConfig", () => {
       "score:",
       "  failBelow: 80",
     ].join("\n");
-    writeFileSync(join(dir, "agentspec.config.yaml"), yaml);
+    writeFileSync(join(dir, "mdpact.config.yaml"), yaml);
 
     const { config, path } = await loadConfig(dir);
-    expect(path).toMatch(/agentspec\.config\.yaml$/);
+    expect(path).toMatch(/mdpact\.config\.yaml$/);
     expect(config.specs[0]!.path).toBe("FOO.md");
     expect(config.rules["conflict/binding"]).toBe("error");
     expect(config.score.failBelow).toBe(80);
@@ -47,7 +47,7 @@ describe("loadConfig", () => {
 
   it("loads JSON config", async () => {
     writeFileSync(
-      join(dir, "agentspec.config.json"),
+      join(dir, "mdpact.config.json"),
       JSON.stringify({ specs: [{ path: "X.md" }], budgets: { tokens: 5000 } }),
     );
     const { config } = await loadConfig(dir);
@@ -57,7 +57,7 @@ describe("loadConfig", () => {
 
   it("throws a helpful error on invalid config", async () => {
     writeFileSync(
-      join(dir, "agentspec.config.json"),
+      join(dir, "mdpact.config.json"),
       JSON.stringify({ rules: { "x/y": "super-serious" } }),
     );
     await expect(loadConfig(dir)).rejects.toThrow(ConfigError);

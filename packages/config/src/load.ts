@@ -5,19 +5,19 @@ import { createJiti } from "jiti";
 import { parse as parseYaml } from "yaml";
 import { ZodError } from "zod";
 
-import { type AgentSpecConfig, configSchema } from "./schema.js";
+import { type MdpactConfig, configSchema } from "./schema.js";
 
 const FILENAMES = [
-  "agentspec.config.ts",
-  "agentspec.config.mts",
-  "agentspec.config.mjs",
-  "agentspec.config.js",
-  "agentspec.config.cjs",
-  "agentspec.config.json",
-  "agentspec.config.yaml",
-  "agentspec.config.yml",
-  ".agentspec.yaml",
-  ".agentspec.yml",
+  "mdpact.config.ts",
+  "mdpact.config.mts",
+  "mdpact.config.mjs",
+  "mdpact.config.js",
+  "mdpact.config.cjs",
+  "mdpact.config.json",
+  "mdpact.config.yaml",
+  "mdpact.config.yml",
+  ".mdpact.yaml",
+  ".mdpact.yml",
 ];
 
 export class ConfigError extends Error {
@@ -31,7 +31,7 @@ export class ConfigError extends Error {
 }
 
 export interface LoadResult {
-  config: AgentSpecConfig;
+  config: MdpactConfig;
   path: string | null;
 }
 

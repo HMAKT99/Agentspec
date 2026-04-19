@@ -1,7 +1,7 @@
 "use client";
 
-import { lint, parseSpec } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import { lint, parseSpec } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 import { useEffect, useState } from "react";
 
 export interface LintResult {
@@ -37,7 +37,7 @@ export interface LintResult {
  *
  * We deliberately don't use a web worker: the lint pass is well under 50 ms
  * on real specs, and Next's worker build pipeline struggles to resolve our
- * workspace TS packages (`@agentspec/core`, `@agentspec/rules`) during dev.
+ * workspace TS packages (`@mdpact/core`, `@mdpact/rules`) during dev.
  * If lint ever gets slow enough to matter, switch to a pre-bundled .js worker
  * rather than the inline `new Worker(new URL(...))` pattern.
  */
@@ -108,7 +108,7 @@ function runLint(text: string): LintResult {
       })),
     };
   } catch (err) {
-    console.warn("[agentspec-lint]", err);
+    console.warn("[mdpact-lint]", err);
     return {
       id,
       errorCount: 0,

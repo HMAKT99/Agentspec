@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Examples",
   description:
-    "Eight concrete spec patterns that AgentSpec catches or ignores — each one runs live in your browser.",
+    "Eight concrete spec patterns that mdpact catches or ignores — each one runs live in your browser.",
 };
 
 export default function ExamplesPage() {
@@ -18,8 +18,8 @@ export default function ExamplesPage() {
           <h1 className="text-2xl font-semibold tracking-tight">Examples</h1>
           <p className="max-w-2xl text-sm text-[color:var(--color-fg-muted)]">
             Eight concrete patterns. Each input runs through the same lint pipeline used by{" "}
-            <code className="font-mono">agentspec lint</code> — in your browser, no network. Click
-            any example on the left to see what fires and why.
+            <code className="font-mono">mdpact lint</code> — in your browser, no network. Click any
+            example on the left to see what fires and why.
           </p>
         </header>
 

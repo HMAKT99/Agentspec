@@ -1,5 +1,5 @@
 ---
-"@agentspec/web": minor
+"@mdpact/web": minor
 ---
 
 Milestone 4 — part 1: Next.js 15 scaffold + landing page.

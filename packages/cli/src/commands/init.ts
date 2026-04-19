@@ -15,7 +15,7 @@ const KNOWN_SPEC_FILES: Array<{ path: string; binding: "primary" | "secondary" |
 export const initCommand = defineCommand({
   meta: {
     name: "init",
-    description: "Scaffold an agentspec.config.ts in the current directory",
+    description: "Scaffold an mdpact.config.ts in the current directory",
   },
   args: {
     cwd: {
@@ -29,12 +29,12 @@ export const initCommand = defineCommand({
     },
     force: {
       type: "boolean",
-      description: "Overwrite an existing agentspec.config.ts",
+      description: "Overwrite an existing mdpact.config.ts",
     },
   },
   async run({ args }) {
     const cwd = resolve(args.cwd);
-    const configPath = join(cwd, "agentspec.config.ts");
+    const configPath = join(cwd, "mdpact.config.ts");
 
     if (existsSync(configPath) && !args.force) {
       process.stderr.write(
@@ -62,7 +62,7 @@ export const initCommand = defineCommand({
         "  no existing specs detected — CLAUDE.md is registered as a placeholder\n",
       );
     }
-    process.stdout.write("\nNext: run `agentspec lint` to see diagnostics.\n");
+    process.stdout.write("\nNext: run `mdpact lint` to see diagnostics.\n");
   },
 });
 
@@ -71,7 +71,7 @@ function renderConfig(specs: Array<{ path: string; binding: string }>): string {
     .map((s) => `    { path: "${s.path}", binding: "${s.binding}" },`)
     .join("\n");
 
-  return `import { defineConfig } from "@agentspec/config";
+  return `import { defineConfig } from "@mdpact/config";
 
 export default defineConfig({
   specs: [
@@ -92,7 +92,7 @@ ${specEntries}
 
 async function ensureGitignore(cwd: string): Promise<void> {
   const path = join(cwd, ".gitignore");
-  const entry = ".agentspec/";
+  const entry = ".mdpact/";
 
   if (!existsSync(path)) {
     await writeFile(path, `${entry}\n`, "utf8");

@@ -1,7 +1,7 @@
 import { resolve } from "node:path";
-import { type AgentSpecConfig, ConfigError, loadConfig } from "@agentspec/config";
-import { lint } from "@agentspec/core";
-import { allRules } from "@agentspec/rules";
+import { ConfigError, type MdpactConfig, loadConfig } from "@mdpact/config";
+import { lint } from "@mdpact/core";
+import { allRules } from "@mdpact/rules";
 import { defineCommand } from "citty";
 import pc from "picocolors";
 
@@ -27,7 +27,7 @@ export const scoreCommand = defineCommand({
     },
     config: {
       type: "string",
-      description: "Path to agentspec config file",
+      description: "Path to mdpact config file",
     },
     format: {
       type: "string",
@@ -42,7 +42,7 @@ export const scoreCommand = defineCommand({
   async run({ args }) {
     const cwd = resolve(args.cwd);
 
-    let config: AgentSpecConfig;
+    let config: MdpactConfig;
     try {
       ({ config } = await loadConfig(cwd, args.config));
     } catch (err) {

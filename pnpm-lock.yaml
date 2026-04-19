@@ -35,16 +35,16 @@ importers:
       '@actions/github':
         specifier: ^6.0.0
         version: 6.0.1
-      '@agentspec/config':
+      '@mdpact/config':
         specifier: workspace:*
         version: link:../../packages/config
-      '@agentspec/core':
+      '@mdpact/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@agentspec/engine':
+      '@mdpact/engine':
         specifier: workspace:*
         version: link:../../packages/engine
-      '@agentspec/rules':
+      '@mdpact/rules':
         specifier: workspace:*
         version: link:../../packages/rules
       tinyglobby:
@@ -60,10 +60,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@agentspec/core':
+      '@mdpact/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@agentspec/rules':
+      '@mdpact/rules':
         specifier: workspace:*
         version: link:../../packages/rules
       '@monaco-editor/react':
@@ -118,16 +118,16 @@ importers:
 
   packages/cli:
     dependencies:
-      '@agentspec/config':
+      '@mdpact/config':
         specifier: workspace:*
         version: link:../config
-      '@agentspec/core':
+      '@mdpact/core':
         specifier: workspace:*
         version: link:../core
-      '@agentspec/engine':
+      '@mdpact/engine':
         specifier: workspace:*
         version: link:../engine
-      '@agentspec/rules':
+      '@mdpact/rules':
         specifier: workspace:*
         version: link:../rules
       citty:
@@ -149,7 +149,7 @@ importers:
 
   packages/config:
     dependencies:
-      '@agentspec/core':
+      '@mdpact/core':
         specifier: workspace:*
         version: link:../core
       jiti:
@@ -199,15 +199,15 @@ importers:
 
   packages/engine:
     dependencies:
-      '@agentspec/core':
-        specifier: workspace:*
-        version: link:../core
       '@anthropic-ai/sdk':
         specifier: ^0.32.1
         version: 0.32.1
       '@google/genai':
         specifier: ^0.11.0
         version: 0.11.0
+      '@mdpact/core':
+        specifier: workspace:*
+        version: link:../core
       openai:
         specifier: ^4.77.0
         version: 4.104.0(ws@8.20.0)(zod@3.25.76)
@@ -224,7 +224,7 @@ importers:
 
   packages/rules:
     dependencies:
-      '@agentspec/core':
+      '@mdpact/core':
         specifier: workspace:*
         version: link:../core
       mdast-util-to-string:

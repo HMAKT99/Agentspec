@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   const rule = getRule(id);
   return {
     title: `${id} — rule`,
-    description: rule?.description ?? "AgentSpec rule documentation",
+    description: rule?.description ?? "mdpact rule documentation",
   };
 }
 

@@ -1,4 +1,4 @@
-import { parseSpec } from "@agentspec/core";
+import { parseSpec } from "@mdpact/core";
 import { describe, expect, it } from "vitest";
 
 import { createDriftRules } from "./drift-rules.js";

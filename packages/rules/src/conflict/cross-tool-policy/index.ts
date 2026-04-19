@@ -1,4 +1,4 @@
-import type { InlineCodeRef, Rule, RuleResult } from "@agentspec/core";
+import type { InlineCodeRef, Rule, RuleResult } from "@mdpact/core";
 
 const RESTRICT_CUES = [
   "never",
@@ -41,7 +41,7 @@ export const crossToolPolicy: Rule = {
   description: "A tool is described as permitted in one spec file and restricted in another.",
   category: "conflict",
   fixable: false,
-  docsUrl: "https://agentspec.dev/rules/conflict/cross-tool-policy",
+  docsUrl: "https://mdpact.dev/rules/conflict/cross-tool-policy",
 
   run(ctx): RuleResult[] {
     if (ctx.allSpecs.length < 2) return [];

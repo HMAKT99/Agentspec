@@ -2,7 +2,7 @@ export const DOCS_CONTENT: Record<string, string> = {
   "getting-started": `## Install
 
 \`\`\`bash
-pnpm add -D @agentspec/cli @agentspec/config
+pnpm add -D @mdpact/cli @mdpact/config
 \`\`\`
 
 npm and yarn work equivalently. Node 20 or 22 required.
@@ -10,15 +10,15 @@ npm and yarn work equivalently. Node 20 or 22 required.
 ## Scaffold a config
 
 \`\`\`bash
-npx agentspec init
+npx mdpact init
 \`\`\`
 
-This detects existing CLAUDE.md / AGENTS.md / .cursorrules / copilot-instructions, writes an \`agentspec.config.ts\` at repo root, and adds \`.agentspec/\` to \`.gitignore\`.
+This detects existing CLAUDE.md / AGENTS.md / .cursorrules / copilot-instructions, writes an \`mdpact.config.ts\` at repo root, and adds \`.mdpact/\` to \`.gitignore\`.
 
 ## First lint
 
 \`\`\`bash
-npx agentspec lint
+npx mdpact lint
 \`\`\`
 
 With no paths, the command lints every file declared under \`config.specs\`. Expect real diagnostics the first time — most specs have at least one \`clarity/*\` or \`structure/*\` issue waiting to be found.
@@ -26,7 +26,7 @@ With no paths, the command lints every file declared under \`config.specs\`. Exp
 ## Score it
 
 \`\`\`bash
-npx agentspec score
+npx mdpact score
 \`\`\`
 
 One number between 0 and 100 you can gate PRs against. Use \`--threshold 80\` for a floor; the same number lives in \`config.score.failBelow\`.
@@ -34,80 +34,80 @@ One number between 0 and 100 you can gate PRs against. Use \`--threshold 80\` fo
 ## What's next
 
 - [CLI reference](/docs/cli) — every command and flag
-- [Configuration](/docs/config) — full \`agentspec.config\` schema
+- [Configuration](/docs/config) — full \`mdpact.config\` schema
 - [Rules](/rules) — the 18 built-in checks, each with rationale and fix guidance
 - [GitHub Action](/docs/action) — PR comments, inline annotations, score-based gates
 `,
 
-  cli: `AgentSpec ships a single binary: \`agentspec\`. Every command supports \`--help\`.
+  cli: `mdpact ships a single binary: \`mdpact\`. Every command supports \`--help\`.
 
-## \`agentspec init\`
+## \`mdpact init\`
 
-Scaffolds \`agentspec.config.ts\`, detects known spec files, edits \`.gitignore\`.
+Scaffolds \`mdpact.config.ts\`, detects known spec files, edits \`.gitignore\`.
 
 \`\`\`bash
-agentspec init [--yes] [--force]
+mdpact init [--yes] [--force]
 \`\`\`
 
-## \`agentspec lint\`
+## \`mdpact lint\`
 
 Runs enabled rules against the target specs.
 
 \`\`\`bash
-agentspec lint [paths...] [--format pretty|json|github] [--max-warnings N]
+mdpact lint [paths...] [--format pretty|json|github] [--max-warnings N]
 \`\`\`
 
 Exit codes: \`0\` clean, \`1\` errors, \`2\` warnings over \`--max-warnings\`.
 
-## \`agentspec fix\`
+## \`mdpact fix\`
 
 Applies auto-fixable rule corrections in place.
 
 \`\`\`bash
-agentspec fix [paths...] [--unsafe] [--dry-run]
+mdpact fix [paths...] [--unsafe] [--dry-run]
 \`\`\`
 
 Safe-only by default; \`--unsafe\` enables transformational fixes (e.g. inserting default frontmatter).
 
-## \`agentspec score\`
+## \`mdpact score\`
 
 Computes the static score (0–100). Fails the command below \`--threshold\`.
 
 \`\`\`bash
-agentspec score [paths...] [--threshold N] [--format pretty|json]
+mdpact score [paths...] [--threshold N] [--format pretty|json]
 \`\`\`
 
-## \`agentspec test\`
+## \`mdpact test\`
 
 Runs the behavior-prediction engine against your declared models. Requires API keys in the environment.
 
 \`\`\`bash
-agentspec test [--models claude-sonnet-4-6,gpt-4o-mini] [--runs 5] [--budget-usd 1]
+mdpact test [--models claude-sonnet-4-6,gpt-4o-mini] [--runs 5] [--budget-usd 1]
 \`\`\`
 
 Aborts mid-run without partial debit if the USD budget would be exceeded.
 
-## \`agentspec diff <ref>\`
+## \`mdpact diff <ref>\`
 
 Compares lint state against a git ref. Prints a diff of introduced / fixed / unchanged diagnostics.
 
 \`\`\`bash
-agentspec diff main [--format markdown|json]
+mdpact diff main [--format markdown|json]
 \`\`\`
 
-## \`agentspec explain <rule-id>\`
+## \`mdpact explain <rule-id>\`
 
 Prints rule metadata and its documentation URL.
 
 \`\`\`bash
-agentspec explain conflict/binding
+mdpact explain conflict/binding
 \`\`\`
 `,
 
-  config: `\`agentspec.config.ts\` accepts the following shape. Every field is optional; defaults are shown.
+  config: `\`mdpact.config.ts\` accepts the following shape. Every field is optional; defaults are shown.
 
 \`\`\`ts
-import { defineConfig } from "@agentspec/config";
+import { defineConfig } from "@mdpact/config";
 
 export default defineConfig({
   specs: [
@@ -132,7 +132,7 @@ export default defineConfig({
     { provider: "openai", modelId: "gpt-4o-mini" },
   ],
   behaviorTests: {
-    path: "agentspec/tests/",
+    path: "mdpact/tests/",
     runsPerTask: 3,
   },
   score: {
@@ -143,11 +143,11 @@ export default defineConfig({
 
 ## File formats
 
-\`agentspec.config.ts\` is preferred (full TypeScript autocomplete). YAML and JSON files are also accepted in this order:
+\`mdpact.config.ts\` is preferred (full TypeScript autocomplete). YAML and JSON files are also accepted in this order:
 
-- \`agentspec.config.ts\`, \`.mts\`, \`.mjs\`, \`.js\`, \`.cjs\`, \`.json\`
-- \`agentspec.config.yaml\`, \`.yml\`
-- \`.agentspec.yaml\`, \`.yml\`
+- \`mdpact.config.ts\`, \`.mts\`, \`.mjs\`, \`.js\`, \`.cjs\`, \`.json\`
+- \`mdpact.config.yaml\`, \`.yml\`
+- \`.mdpact.yaml\`, \`.yml\`
 
 ## Validation
 
@@ -172,11 +172,11 @@ predictBehavior({
 });
 \`\`\`
 
-The engine aborts mid-run when the next call would exceed the budget. \`BehaviorReport.budgetExceeded\` reports the outcome. \`agentspec test --budget-usd\` wires this into the CLI (default $1).
+The engine aborts mid-run when the next call would exceed the budget. \`BehaviorReport.budgetExceeded\` reports the outcome. \`mdpact test --budget-usd\` wires this into the CLI (default $1).
 
 ## Caching
 
-Responses are cached by a hash of \`(spec, task, model, model-version, run-seed)\`. Only the hash leaves the filesystem — spec content is never stored in the key. Cache lives at \`.agentspec/cache\` by default; \`agentspec test --no-cache\` skips it.
+Responses are cached by a hash of \`(spec, task, model, model-version, run-seed)\`. Only the hash leaves the filesystem — spec content is never stored in the key. Cache lives at \`.mdpact/cache\` by default; \`mdpact test --no-cache\` skips it.
 
 ## Adapters
 
@@ -188,15 +188,15 @@ Custom adapters just need to implement \`ModelAdapter\` (\`id\`, \`modelVersion\
 
 ## Privacy
 
-\`agentspec test\` is the only command that sends anything over the network. Everything else — \`lint\`, \`score\`, \`fix\`, \`diff\`, \`explain\` — runs entirely against local files.
+\`mdpact test\` is the only command that sends anything over the network. Everything else — \`lint\`, \`score\`, \`fix\`, \`diff\`, \`explain\` — runs entirely against local files.
 `,
 
-  action: `Run AgentSpec on every pull request. The action emits inline diff annotations, posts a sticky PR comment with score + diagnostics, and fails the check when the score drops below a configured threshold.
+  action: `Run mdpact on every pull request. The action emits inline diff annotations, posts a sticky PR comment with score + diagnostics, and fails the check when the score drops below a configured threshold.
 
 ## Minimal workflow
 
 \`\`\`yaml
-name: AgentSpec
+name: mdpact
 
 on:
   pull_request:
@@ -205,7 +205,7 @@ on:
     branches: [main]
 
 jobs:
-  agentspec:
+  mdpact:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -223,7 +223,7 @@ jobs:
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \`config\` | Path to \`agentspec.config.*\` | auto |
+| \`config\` | Path to \`mdpact.config.*\` | auto |
 | \`fail-below\` | Fail the check if score drops below | \`70\` |
 | \`run-behavior-tests\` | Run the behavior engine (costs API credits) | \`false\` |
 | \`models\` | Comma-separated subset of models | — |

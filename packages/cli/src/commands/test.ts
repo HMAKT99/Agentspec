@@ -1,7 +1,7 @@
 import { readFile, readdir } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { type AgentSpecConfig, ConfigError, loadConfig } from "@agentspec/config";
-import { lint, parseSpec } from "@agentspec/core";
+import { ConfigError, type MdpactConfig, loadConfig } from "@mdpact/config";
+import { lint, parseSpec } from "@mdpact/core";
 import {
   type BehaviorReport,
   DiskCache,
@@ -12,7 +12,7 @@ import {
   createDriftRules,
   loadTaskFile,
   predictBehavior,
-} from "@agentspec/engine";
+} from "@mdpact/engine";
 import { defineCommand } from "citty";
 import pc from "picocolors";
 
@@ -33,7 +33,7 @@ export const testCommand = defineCommand({
     },
     config: {
       type: "string",
-      description: "Path to agentspec config file",
+      description: "Path to mdpact config file",
     },
     spec: {
       type: "string",
@@ -57,7 +57,7 @@ export const testCommand = defineCommand({
     },
     cache: {
       type: "boolean",
-      description: "Cache responses under .agentspec/cache (enabled by default)",
+      description: "Cache responses under .mdpact/cache (enabled by default)",
       default: true,
     },
     format: {
@@ -69,7 +69,7 @@ export const testCommand = defineCommand({
   async run({ args }) {
     const cwd = resolve(args.cwd);
 
-    let config: AgentSpecConfig;
+    let config: MdpactConfig;
     try {
       ({ config } = await loadConfig(cwd, args.config));
     } catch (err) {
@@ -82,7 +82,7 @@ export const testCommand = defineCommand({
 
     if (config.models.length === 0) {
       process.stderr.write(
-        "No models declared in agentspec.config — add entries under `models:` first.\n",
+        "No models declared in mdpact.config — add entries under `models:` first.\n",
       );
       process.exit(1);
     }
@@ -100,7 +100,7 @@ export const testCommand = defineCommand({
     const specPath = resolve(cwd, args.spec ?? config.specs[0]?.path ?? "CLAUDE.md");
     const specText = await readFile(specPath, "utf8");
 
-    const tasksDir = resolve(cwd, args.tasks ?? config.behaviorTests.path ?? "agentspec/tests");
+    const tasksDir = resolve(cwd, args.tasks ?? config.behaviorTests.path ?? "mdpact/tests");
     const tasks = await discoverTasks(tasksDir);
 
     if (tasks.length === 0) {
@@ -111,7 +111,7 @@ export const testCommand = defineCommand({
     const runs = toInt(args.runs, config.behaviorTests.runsPerTask ?? 3);
     const budgetUsd = toFloat(args["budget-usd"], config.budgets.behaviorTestUsdMax ?? 1);
 
-    const cache = args.cache ? new DiskCache(join(cwd, ".agentspec/cache")) : new NullCache();
+    const cache = args.cache ? new DiskCache(join(cwd, ".mdpact/cache")) : new NullCache();
 
     process.stdout.write(
       pc.dim(
