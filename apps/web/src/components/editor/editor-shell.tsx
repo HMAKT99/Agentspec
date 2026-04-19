@@ -77,6 +77,7 @@ export function EditorShell({ initialSpec }: Props) {
     warnings: report?.warningCount ?? 0,
     infos: report?.infoCount ?? 0,
   };
+  const emptySpecFired = report?.results.some((r) => r.ruleId === "structure/empty-spec") ?? false;
 
   return (
     <div className="flex flex-col gap-4">
@@ -126,6 +127,7 @@ export function EditorShell({ initialSpec }: Props) {
         infos={counts.infos}
         tokens={ctx.tokens}
         frontmatterMissing={ctx.frontmatterKeys.length === 0}
+        emptySpecFired={emptySpecFired}
       />
     </div>
   );

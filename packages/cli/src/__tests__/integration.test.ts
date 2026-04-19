@@ -62,7 +62,22 @@ describe("mdpact CLI — end-to-end", () => {
     it("exits 0 on a clean spec", async () => {
       writeFileSync(
         join(tmp, "CLAUDE.md"),
-        "---\nversion: 1\nowner: team\n---\n\n# Spec\n\n- You must always commit before pushing.\n",
+        [
+          "---",
+          "version: 1",
+          "owner: team",
+          "---",
+          "",
+          "# Spec",
+          "",
+          "This document governs agent behavior in the repository. The binding rules below apply to any agent or developer editing code in this monorepo, regardless of which package they are touching.",
+          "",
+          "## Binding rules",
+          "",
+          "- You must always commit before pushing changes to the remote.",
+          "- Always ask the reviewer for explicit approval before merging to a protected branch.",
+          "",
+        ].join("\n"),
       );
       const r = await mdpact(["lint", "CLAUDE.md"], tmp);
       expect(r.code).toBe(0);
@@ -127,7 +142,22 @@ describe("mdpact CLI — end-to-end", () => {
     it("returns 100 on a clean spec with frontmatter", async () => {
       writeFileSync(
         join(tmp, "CLAUDE.md"),
-        "---\nversion: 1\nowner: team\n---\n\n- You must always commit before pushing.\n",
+        [
+          "---",
+          "version: 1",
+          "owner: team",
+          "---",
+          "",
+          "# Spec",
+          "",
+          "This document governs agent behavior in the repository. The binding rules below apply to any agent or developer editing code in this monorepo, regardless of which package they are touching.",
+          "",
+          "## Binding rules",
+          "",
+          "- You must always commit before pushing changes to the remote.",
+          "- Always ask the reviewer for explicit approval before merging to a protected branch.",
+          "",
+        ].join("\n"),
       );
       const r = await mdpact(["score", "CLAUDE.md"], tmp);
       expect(r.code).toBe(0);
@@ -137,18 +167,48 @@ describe("mdpact CLI — end-to-end", () => {
     it("exits 1 when score falls below --threshold", async () => {
       writeFileSync(
         join(tmp, "CLAUDE.md"),
-        "---\nversion: 1\nowner: team\n---\n\n- You must always commit before pushing.\n- Never commit before pushing.\n",
+        [
+          "---",
+          "version: 1",
+          "owner: team",
+          "---",
+          "",
+          "# Spec",
+          "",
+          "This document governs agent behavior in the repository. The binding rules below apply to any agent or developer editing code in this monorepo.",
+          "",
+          "## Git workflow",
+          "",
+          "- You must always commit before pushing changes to the remote.",
+          "- Never commit before pushing changes to the remote.",
+          "",
+        ].join("\n"),
       );
       const r = await mdpact(["score", "CLAUDE.md", "--threshold", "95"], tmp);
       expect(r.code).toBe(1);
-      // Score is 100 - 8 = 92
+      // Score is 100 - 8 (conflict/binding error) = 92
       expect(r.stdout).toContain("92");
     });
 
     it("exits 0 when score meets --threshold", async () => {
       writeFileSync(
         join(tmp, "CLAUDE.md"),
-        "---\nversion: 1\nowner: team\n---\n\n- You must always commit before pushing.\n- Never commit before pushing.\n",
+        [
+          "---",
+          "version: 1",
+          "owner: team",
+          "---",
+          "",
+          "# Spec",
+          "",
+          "This document governs agent behavior in the repository. The binding rules below apply to any agent or developer editing code in this monorepo.",
+          "",
+          "## Git workflow",
+          "",
+          "- You must always commit before pushing changes to the remote.",
+          "- Never commit before pushing changes to the remote.",
+          "",
+        ].join("\n"),
       );
       const r = await mdpact(["score", "CLAUDE.md", "--threshold", "70"], tmp);
       expect(r.code).toBe(0);

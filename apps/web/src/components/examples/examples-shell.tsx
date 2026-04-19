@@ -212,7 +212,11 @@ function scoreOf(report: ReturnType<typeof useDebouncedLint>, markdown: string):
     3 * report.warningCount -
     1 * report.infoCount -
     (frontmatterMissing ? 2 : 0);
-  return Math.max(0, Math.round(raw));
+  let score = Math.max(0, Math.round(raw));
+  if (report.results.some((r) => r.ruleId === "structure/empty-spec")) {
+    score = Math.min(score, 40);
+  }
+  return score;
 }
 
 function summaryLine(report: NonNullable<ReturnType<typeof useDebouncedLint>>): string {

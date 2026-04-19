@@ -90,6 +90,7 @@ function renderScore(b: ReturnType<typeof computeScore>): string {
     `  info × ${b.infos.count.toString().padStart(3)}       ${formatDelta(b.infos.delta)}`,
     `  token budget       ${b.tokenBudget.exceeded ? formatDelta(b.tokenBudget.delta) : pc.dim("ok")}`,
     `  frontmatter        ${b.frontmatter.missing ? formatDelta(b.frontmatter.delta) : pc.dim("ok")}`,
+    `  empty spec         ${b.emptySpec.fired ? pc.red(`cap ${b.emptySpec.cap}`) : pc.dim("ok")}`,
   ];
 
   return `${lines.join("\n")}\n`;
