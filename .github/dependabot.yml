@@ -1,0 +1,44 @@
+version: 2
+updates:
+  # JS/TS dependencies across the monorepo
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    groups:
+      types:
+        patterns:
+          - "@types/*"
+      biome-tooling:
+        patterns:
+          - "@biomejs/*"
+          - "biome"
+      next-stack:
+        patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+          - "@types/react*"
+      vendor-sdks:
+        patterns:
+          - "@anthropic-ai/*"
+          - "openai"
+          - "@google/genai"
+
+  # GitHub Actions versions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
+
+  # Nested actions consumers
+  - package-ecosystem: github-actions
+    directory: /apps/action
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 3
