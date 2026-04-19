@@ -18,10 +18,18 @@ describe("loadConfig", () => {
   it("returns defaults when no config is present", async () => {
     const { config, path } = await loadConfig(dir);
     expect(path).toBeNull();
-    expect(config.specs).toEqual([
-      { path: "CLAUDE.md", binding: "primary" },
-      { path: "AGENTS.md", binding: "secondary" },
-    ]);
+    // Default discovery covers all common agent-instruction file formats
+    // (Claude, AGENTS.md, Copilot, Cursor, Windsurf, Cline, Aider, MCP).
+    const paths = config.specs.map((s) => s.path);
+    expect(paths).toContain("CLAUDE.md");
+    expect(paths).toContain("AGENTS.md");
+    expect(paths).toContain(".github/copilot-instructions.md");
+    expect(paths).toContain(".cursorrules");
+    expect(paths).toContain(".cursor/rules/**/*.mdc");
+    expect(paths).toContain(".windsurfrules");
+    expect(paths).toContain(".clinerules");
+    expect(paths).toContain("**/*.mcp.md");
+    expect(paths).toContain("**/*.agent.md");
     expect(config.rules).toEqual({});
   });
 
