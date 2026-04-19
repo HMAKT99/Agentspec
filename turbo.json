@@ -1,9 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["BASE_PATH"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "dist-ts/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", "dist-ts/**", ".next/**", "!.next/cache/**", "out/**"]
     },
     "test": {
       "dependsOn": ["^build"],
