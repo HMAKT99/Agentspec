@@ -175,7 +175,11 @@ function hydrateInitial(fallback: string): string {
 
 function computeScore(report: LintReport): number {
   const raw = 100 - 8 * report.errorCount - 3 * report.warningCount - 1 * report.infoCount;
-  return Math.max(0, Math.round(raw));
+  let score = Math.max(0, Math.round(raw));
+  if (report.results.some((r) => r.ruleId === "structure/empty-spec")) {
+    score = Math.min(score, 40);
+  }
+  return score;
 }
 
 function plural(n: number): string {

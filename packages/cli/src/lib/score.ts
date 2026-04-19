@@ -1,6 +1,8 @@
 import type { MdpactConfig } from "@mdpact/config";
 import type { LintReport, ParsedSpec } from "@mdpact/core";
 
+const EMPTY_SPEC_CAP = 40;
+
 export interface ScoreBreakdown {
   base: 100;
   errors: { count: number; delta: number };
@@ -8,6 +10,7 @@ export interface ScoreBreakdown {
   infos: { count: number; delta: number };
   tokenBudget: { exceeded: boolean; delta: number };
   frontmatter: { missing: boolean; delta: number };
+  emptySpec: { fired: boolean; cap: number | null };
   total: number;
 }
 
@@ -18,6 +21,7 @@ export function computeScore(report: LintReport, config: MdpactConfig): ScoreBre
 
   const tokenExceeded = isTokenBudgetExceeded(report.specs, config);
   const missingFrontmatter = report.specs.some((s) => Object.keys(s.frontmatter).length === 0);
+  const emptySpecFired = report.results.some((r) => r.ruleId === "structure/empty-spec");
 
   const errorsDelta = -8 * errors;
   const warningsDelta = -3 * warnings;
@@ -26,7 +30,8 @@ export function computeScore(report: LintReport, config: MdpactConfig): ScoreBre
   const frontmatterDelta = missingFrontmatter ? -2 : 0;
 
   const raw = 100 + errorsDelta + warningsDelta + infosDelta + tokenDelta + frontmatterDelta;
-  const total = Math.max(0, Math.round(raw));
+  let total = Math.max(0, Math.round(raw));
+  if (emptySpecFired) total = Math.min(total, EMPTY_SPEC_CAP);
 
   return {
     base: 100,
@@ -35,6 +40,7 @@ export function computeScore(report: LintReport, config: MdpactConfig): ScoreBre
     infos: { count: infos, delta: infosDelta },
     tokenBudget: { exceeded: tokenExceeded, delta: tokenDelta },
     frontmatter: { missing: missingFrontmatter, delta: frontmatterDelta },
+    emptySpec: { fired: emptySpecFired, cap: emptySpecFired ? EMPTY_SPEC_CAP : null },
     total,
   };
 }

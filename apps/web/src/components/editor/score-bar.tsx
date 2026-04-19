@@ -6,11 +6,20 @@ interface Props {
   infos: number;
   tokens: number;
   frontmatterMissing: boolean;
+  emptySpecFired: boolean;
 }
 
-export function ScoreBar({ errors, warnings, infos, tokens, frontmatterMissing }: Props) {
+export function ScoreBar({
+  errors,
+  warnings,
+  infos,
+  tokens,
+  frontmatterMissing,
+  emptySpecFired,
+}: Props) {
   const raw = 100 - 8 * errors - 3 * warnings - 1 * infos - (frontmatterMissing ? 2 : 0);
-  const score = Math.max(0, Math.round(raw));
+  let score = Math.max(0, Math.round(raw));
+  if (emptySpecFired) score = Math.min(score, 40);
   const toneClass =
     score >= 80
       ? "border-[color:var(--color-line)] bg-[color:var(--color-bg-alt)]"

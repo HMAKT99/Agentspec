@@ -18,8 +18,10 @@ import { unknownTool } from "./tools/unknown-tool/index.js";
 
 import { deadRule } from "./structure/dead-rule/index.js";
 import { duplicateHeading } from "./structure/duplicate-heading/index.js";
+import { emptySpec } from "./structure/empty-spec/index.js";
 import { noFrontmatter } from "./structure/no-frontmatter/index.js";
 import { noSections } from "./structure/no-sections/index.js";
+import { tooShort } from "./structure/too-short/index.js";
 
 import { tokensBudget } from "./tokens/budget/index.js";
 import { buriedRule } from "./tokens/buried-rule/index.js";
@@ -44,8 +46,10 @@ export const allRules: Rule[] = [
   unknownTool,
   deadRule,
   duplicateHeading,
+  emptySpec,
   noFrontmatter,
   noSections,
+  tooShort,
   buriedRule,
   tokensBudget,
   missingHumanGate,
@@ -69,8 +73,10 @@ export {
   unknownTool,
   deadRule,
   duplicateHeading,
+  emptySpec,
   noFrontmatter,
   noSections,
+  tooShort,
   buriedRule,
   tokensBudget,
   missingHumanGate,
