@@ -3,9 +3,11 @@ dist/
 !apps/action/dist/
 apps/action/dist-ts/
 .next/
+out/
 .turbo/
 coverage/
 .agentspec/
+.mdpact/
 *.tsbuildinfo
 
 .env

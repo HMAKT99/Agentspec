@@ -1,6 +1,6 @@
 {
   "name": "@mdpact/rules",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Built-in rule definitions for mdpact",
   "type": "module",
   "main": "./dist/index.js",

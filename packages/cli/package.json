@@ -1,6 +1,6 @@
 {
   "name": "@mdpact/cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "mdpact CLI — lint, test, and score agent instruction files",
   "type": "module",
   "bin": {
