@@ -1,5 +1,6 @@
 import type { Rule } from "@agentspec/core";
 
+import { bindingException } from "./conflict/binding-exception/index.js";
 import { bindingConflict } from "./conflict/binding/index.js";
 import { scopeOverlap } from "./conflict/scope-overlap/index.js";
 import { toolPolicy } from "./conflict/tool-policy/index.js";
@@ -13,6 +14,7 @@ import { destructiveNoConfirm } from "./tools/destructive-no-confirm/index.js";
 import { missingWhen } from "./tools/missing-when/index.js";
 import { unknownTool } from "./tools/unknown-tool/index.js";
 
+import { deadRule } from "./structure/dead-rule/index.js";
 import { duplicateHeading } from "./structure/duplicate-heading/index.js";
 import { noFrontmatter } from "./structure/no-frontmatter/index.js";
 import { noSections } from "./structure/no-sections/index.js";
@@ -26,6 +28,7 @@ import { secretInSpec } from "./compliance/secret-in-spec/index.js";
 
 export const allRules: Rule[] = [
   bindingConflict,
+  bindingException,
   scopeOverlap,
   toolPolicy,
   bindingAmbiguous,
@@ -35,6 +38,7 @@ export const allRules: Rule[] = [
   destructiveNoConfirm,
   missingWhen,
   unknownTool,
+  deadRule,
   duplicateHeading,
   noFrontmatter,
   noSections,
@@ -47,6 +51,7 @@ export const allRules: Rule[] = [
 
 export {
   bindingConflict,
+  bindingException,
   scopeOverlap,
   toolPolicy,
   bindingAmbiguous,
@@ -56,6 +61,7 @@ export {
   destructiveNoConfirm,
   missingWhen,
   unknownTool,
+  deadRule,
   duplicateHeading,
   noFrontmatter,
   noSections,

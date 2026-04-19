@@ -10,6 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const FIXTURE_RULES: string[] = [
   "conflict/binding",
+  "conflict/binding-exception",
   "conflict/scope-overlap",
   "conflict/tool-policy",
   "clarity/binding-ambiguous",
@@ -19,6 +20,7 @@ const FIXTURE_RULES: string[] = [
   "tools/destructive-no-confirm",
   "tools/missing-when",
   "tools/unknown-tool",
+  "structure/dead-rule",
   "structure/duplicate-heading",
   "structure/no-frontmatter",
   "structure/no-sections",
