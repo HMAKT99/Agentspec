@@ -44,9 +44,25 @@ Until then, clone this repo and run `pnpm install && pnpm --filter @mdpact/cli b
 
 ## Why
 
-Markdown became the lingua franca of agent instructions by accident. Every Claude Code, Cursor, and MCP user ends up with a `CLAUDE.md` / `AGENTS.md` / `.cursorrules` that defines agent behavior — and no tool exists to validate, test, or govern those files.
+Markdown became the lingua franca of agent instructions by accident. Every coding agent — Claude Code, GitHub Copilot, Cursor, Windsurf, Cline, Aider, Codex — reads markdown files as its runtime contract, and no tool exists to validate, test, or govern those files.
 
-The result:
+mdpact auto-discovers specs across the whole ecosystem:
+
+| File | Agent(s) |
+| --- | --- |
+| `CLAUDE.md` | Claude Code |
+| `AGENTS.md` | Codex, GitHub Copilot, Cursor, Claude Code (canonical open format, AAIF / Linux Foundation) |
+| `.github/copilot-instructions.md` | GitHub Copilot (repo) |
+| `.github/copilot-cli-instructions.md` | GitHub Copilot CLI |
+| `**/*.agent.md` | VS Code Copilot custom agents |
+| `.cursorrules` / `.cursor/rules/**/*.mdc` | Cursor |
+| `.windsurfrules` | Windsurf |
+| `.clinerules` | Cline |
+| `.aider.md`, `.aider-instructions.md` | Aider |
+| `GEMINI.md` | Google Gemini CLI |
+| `**/*.mcp.md` | MCP tool specs |
+
+Across all these formats the failure modes are the same:
 
 - Two rules that contradict on the same page, with neither marked as the exception
 - A tool referenced but never scoped — "use `gh`" without a when

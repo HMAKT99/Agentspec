@@ -7,7 +7,7 @@
  */
 
 import { execFile } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -135,6 +135,61 @@ describe("mdpact CLI — end-to-end", () => {
       const r = await mdpact(["lint", "*.md"], tmp);
       expect(r.code).toBe(1);
       expect(r.stdout).toContain("conflict/cross-binding");
+    });
+
+    it("auto-discovers .github/copilot-instructions.md with default config", async () => {
+      mkdirSync(join(tmp, ".github"), { recursive: true });
+      writeFileSync(
+        join(tmp, ".github", "copilot-instructions.md"),
+        [
+          "---",
+          "version: 1",
+          "owner: team",
+          "---",
+          "",
+          "# Copilot instructions",
+          "",
+          "This repository uses GitHub Copilot in cloud and CLI mode. Binding rules below apply to any agent generating or reviewing code in this workspace.",
+          "",
+          "## Binding rules",
+          "",
+          "- Always run `pnpm test` before opening a PR, and ask the reviewer to approve the changes.",
+          "- Never deploy without explicit human approval from the owner.",
+          "",
+        ].join("\n"),
+      );
+      // No explicit path: relies on default config.specs to auto-discover.
+      const r = await mdpact(["lint"], tmp);
+      expect(r.code).toBe(0);
+      // Clean lint output is "✓ No issues found\n  1 spec scanned in Xms" —
+      // the "1 spec scanned" confirms auto-discovery actually picked up the
+      // Copilot file from the default config.specs list.
+      expect(r.stdout).toMatch(/1 spec scanned/);
+    });
+
+    it("auto-discovers .cursorrules with default config", async () => {
+      writeFileSync(
+        join(tmp, ".cursorrules"),
+        [
+          "---",
+          "version: 1",
+          "owner: team",
+          "---",
+          "",
+          "# Cursor rules",
+          "",
+          "Binding rules for agents editing code in this workspace. These apply regardless of which file the agent is touching.",
+          "",
+          "## Workflow",
+          "",
+          "- Always run `pnpm test` before committing, and ask the owner to review and approve changes before merging.",
+          "- Never force-push a shared branch without explicit owner approval.",
+          "",
+        ].join("\n"),
+      );
+      const r = await mdpact(["lint"], tmp);
+      expect(r.code).toBe(0);
+      expect(r.stdout).toMatch(/1 spec scanned/);
     });
   });
 

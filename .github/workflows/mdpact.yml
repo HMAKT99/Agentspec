@@ -3,8 +3,23 @@ name: mdpact
 on:
   pull_request:
     paths:
+      # Canonical / Claude-family
       - "CLAUDE.md"
       - "AGENTS.md"
+      - "GEMINI.md"
+      # GitHub Copilot (repo + CLI + custom agents)
+      - ".github/copilot-instructions.md"
+      - ".github/copilot-cli-instructions.md"
+      - "**/*.agent.md"
+      # Cursor
+      - ".cursorrules"
+      - ".cursor/rules/**/*.mdc"
+      # Windsurf / Cline / Aider
+      - ".windsurfrules"
+      - ".clinerules"
+      - ".aider.md"
+      - ".aider-instructions.md"
+      # MCP tool specs
       - "**/*.mcp.md"
   workflow_dispatch:
 

@@ -5,11 +5,20 @@ import { defineCommand } from "citty";
 import pc from "picocolors";
 
 const KNOWN_SPEC_FILES: Array<{ path: string; binding: "primary" | "secondary" | "tool-spec" }> = [
+  // Canonical / Claude-family
   { path: "CLAUDE.md", binding: "primary" },
-  { path: "AGENTS.md", binding: "secondary" },
-  { path: ".cursorrules", binding: "secondary" },
+  { path: "AGENTS.md", binding: "primary" },
   { path: "GEMINI.md", binding: "secondary" },
-  { path: ".github/copilot-instructions.md", binding: "secondary" },
+  // GitHub Copilot (repo + CLI + custom agents)
+  { path: ".github/copilot-instructions.md", binding: "primary" },
+  { path: ".github/copilot-cli-instructions.md", binding: "secondary" },
+  // Cursor
+  { path: ".cursorrules", binding: "primary" },
+  // Windsurf / Cline / Aider
+  { path: ".windsurfrules", binding: "primary" },
+  { path: ".clinerules", binding: "primary" },
+  { path: ".aider.md", binding: "secondary" },
+  { path: ".aider-instructions.md", binding: "secondary" },
 ];
 
 export const initCommand = defineCommand({
