@@ -214,7 +214,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: HMAKT99/Agentspec@main
+      - uses: HMAKT99/Agentspec/apps/action@v0.1.0
         with:
           fail-below: "70"
 \`\`\`
@@ -242,7 +242,7 @@ jobs:
 Set \`run-behavior-tests: "true"\` and supply API keys via secrets.
 
 \`\`\`yaml
-      - uses: HMAKT99/Agentspec@main
+      - uses: HMAKT99/Agentspec/apps/action@v0.1.0
         with:
           run-behavior-tests: "true"
         env:
