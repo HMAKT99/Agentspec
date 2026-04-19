@@ -4,11 +4,43 @@
 
 `mdpact` lints the markdown your agents read, so you stop shipping contradictions. Free, open-source, local-first.
 
+## Quickest start — drop the Action into a PR check
+
+```yaml
+# .github/workflows/mdpact.yml
+name: mdpact
+on:
+  pull_request:
+    paths: ["CLAUDE.md", "AGENTS.md", "**/*.mcp.md"]
+
+jobs:
+  mdpact:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: HMAKT99/Agentspec/apps/action@v0.1.0
+        with:
+          fail-below: "70"
+```
+
+Posts a sticky PR comment with score + inline annotations. No install, no secrets needed for the default lint path.
+
+## Local CLI — npm publish pending
+
+Once the `@mdpact/*` packages ship to npm you'll be able to:
+
 ```bash
-npm i -D @mdpact/cli @mdpact/config
+npm i -D @mdpact/cli
 npx mdpact init
 npx mdpact lint
 ```
+
+Until then, clone this repo and run `pnpm install && pnpm --filter @mdpact/cli build` to use the binary from `packages/cli/bin/mdpact.mjs`.
 
 ## Why
 
@@ -32,7 +64,7 @@ The result:
 - **Test** — behavior-prediction engine runs your spec against Anthropic / OpenAI / Google models, classifies each response (`refused` / `clarified` / `acted` / `deviated`), and reports per-model divergence. Hard USD budget guardrail.
 - **Diff** — lint the spec at a git ref, compare against your working tree, surface introduced / fixed diagnostics.
 - **CI** — GitHub Action posts a sticky PR comment with score delta, inline annotations, and fails the check on score regression.
-- **Playground** — paste a spec into the in-browser lint at [mdpact.dev/playground](https://mdpact.dev/playground). Nothing leaves your machine.
+- **Playground** — paste a spec into the in-browser lint at [hmakt99.github.io/Agentspec/playground](https://hmakt99.github.io/Agentspec/playground/). Nothing leaves your machine.
 
 ## 60-second tour
 
@@ -64,7 +96,7 @@ conflict/binding
 category: conflict
 severity: error
 fixable:  no
-docs:     https://mdpact.dev/rules/conflict/binding
+docs:     https://hmakt99.github.io/Agentspec/rules/conflict/binding
 
 Two binding directives directly contradict each other.
 ```
@@ -85,7 +117,7 @@ Everything else — `lint`, `score`, `fix`, `diff`, `explain`, `init` — runs e
 | [`@mdpact/config`](./packages/config) | Config loader (TS / JS / JSON / YAML) |
 | [`@mdpact/engine`](./packages/engine) | Behavior-prediction engine + adapters |
 | [`@mdpact/action`](./apps/action) | GitHub Action |
-| [`@mdpact/web`](./apps/web) | [mdpact.dev](https://mdpact.dev) |
+| [`@mdpact/web`](./apps/web) | [hmakt99.github.io/Agentspec](https://hmakt99.github.io/Agentspec/) |
 
 ## GitHub Action
 
