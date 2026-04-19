@@ -1,0 +1,23 @@
+name: mdpact
+
+on:
+  pull_request:
+    paths:
+      - "CLAUDE.md"
+      - "AGENTS.md"
+      - "**/*.mcp.md"
+  workflow_dispatch:
+
+jobs:
+  mdpact:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./apps/action
+        with:
+          fail-below: "70"
