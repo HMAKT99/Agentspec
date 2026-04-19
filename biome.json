@@ -31,11 +31,13 @@
       "dist",
       "dist-ts",
       ".next",
+      "out",
       "node_modules",
       ".turbo",
       "coverage",
       "**/fixtures/**",
-      "apps/action/dist"
+      "apps/action/dist",
+      "apps/web/out"
     ]
   }
 }

@@ -1,0 +1,72 @@
+name: Deploy website to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/web/**"
+      - "packages/core/**"
+      - "packages/rules/**"
+      - "packages/config/**"
+      - "pnpm-lock.yaml"
+      - "turbo.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+# Only one deploy in flight at a time; cancel older queued runs.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Resolve base path from repo name
+        id: base
+        run: |
+          # GitHub Pages for a project repo serves at /<repo>/, so the
+          # Next basePath must match. Derive it from github.event.repository.name.
+          echo "base=/${{ github.event.repository.name }}" >> "$GITHUB_OUTPUT"
+
+      - name: Build web app
+        env:
+          BASE_PATH: ${{ steps.base.outputs.base }}
+        run: pnpm turbo run build --filter=@mdpact/web
+
+      - name: Disable Jekyll (don't let GitHub Pages mangle _next/*)
+        run: touch apps/web/out/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
