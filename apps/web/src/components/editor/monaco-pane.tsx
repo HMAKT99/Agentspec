@@ -58,7 +58,7 @@ export function MonacoPane({ value, onChange, diagnostics, onMount }: Props) {
         value={value}
         onChange={(v) => onChange(v ?? "")}
         onMount={handleMount}
-        theme="vs"
+        theme="vs-dark"
         options={{
           fontFamily:
             "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",

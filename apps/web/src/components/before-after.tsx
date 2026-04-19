@@ -1,8 +1,8 @@
 export function BeforeAfter() {
   return (
     <section className="pb-20">
-      <h2 className="mb-3 text-2xl font-semibold tracking-tight">
-        Contradictions hide in plain markdown.
+      <h2 className="font-display mb-3 text-4xl font-normal tracking-tight text-[color:var(--color-fg)]">
+        Contradictions hide in plain markdown
       </h2>
       <p className="mb-8 max-w-2xl text-[color:var(--color-fg-muted)]">
         Two rules that look fine in isolation become undefined behavior when the agent sees them
