@@ -19,6 +19,12 @@ export function Header() {
           <Link href="/rules" className="hover:text-[color:var(--color-fg)]">
             Rules
           </Link>
+          <Link href="/examples" className="hover:text-[color:var(--color-fg)]">
+            Examples
+          </Link>
+          <Link href="/editor" className="hover:text-[color:var(--color-fg)]">
+            Editor
+          </Link>
           <Link href="/playground" className="hover:text-[color:var(--color-fg)]">
             Playground
           </Link>

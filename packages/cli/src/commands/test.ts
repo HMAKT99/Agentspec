@@ -9,6 +9,7 @@ import {
   NullCache,
   type Task,
   createBehaviorRules,
+  createDriftRules,
   loadTaskFile,
   predictBehavior,
 } from "@agentspec/engine";
@@ -131,10 +132,11 @@ export const testCommand = defineCommand({
     });
 
     const behaviorRules = createBehaviorRules(report);
+    const driftRules = createDriftRules(report);
     const specForLint = parseSpec(specPath, specText);
     const lintReport = lint({
       specs: [specForLint],
-      rules: behaviorRules,
+      rules: [...behaviorRules, ...driftRules],
       config: toLintConfig(config),
     });
 

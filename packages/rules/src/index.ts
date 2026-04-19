@@ -2,6 +2,8 @@ import type { Rule } from "@agentspec/core";
 
 import { bindingException } from "./conflict/binding-exception/index.js";
 import { bindingConflict } from "./conflict/binding/index.js";
+import { crossBinding } from "./conflict/cross-binding/index.js";
+import { crossToolPolicy } from "./conflict/cross-tool-policy/index.js";
 import { scopeOverlap } from "./conflict/scope-overlap/index.js";
 import { toolPolicy } from "./conflict/tool-policy/index.js";
 
@@ -29,6 +31,8 @@ import { secretInSpec } from "./compliance/secret-in-spec/index.js";
 export const allRules: Rule[] = [
   bindingConflict,
   bindingException,
+  crossBinding,
+  crossToolPolicy,
   scopeOverlap,
   toolPolicy,
   bindingAmbiguous,
@@ -52,6 +56,8 @@ export const allRules: Rule[] = [
 export {
   bindingConflict,
   bindingException,
+  crossBinding,
+  crossToolPolicy,
   scopeOverlap,
   toolPolicy,
   bindingAmbiguous,

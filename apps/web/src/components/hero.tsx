@@ -14,10 +14,16 @@ export function Hero() {
         </p>
         <div className="flex flex-wrap items-center gap-3 pt-2">
           <Link
-            href="/docs/getting-started"
+            href="/editor"
             className="inline-flex h-10 items-center rounded-[8px] bg-[color:var(--color-fg)] px-5 text-sm font-medium text-[color:var(--color-bg)] hover:opacity-90"
           >
-            Get started
+            Try the editor
+          </Link>
+          <Link
+            href="/docs/getting-started"
+            className="inline-flex h-10 items-center rounded-[8px] border border-[color:var(--color-line)] px-5 text-sm font-medium text-[color:var(--color-fg)] hover:bg-[color:var(--color-bg-alt)]"
+          >
+            Docs
           </Link>
           <a
             href="https://github.com/HMAKT99/Agentspec"
