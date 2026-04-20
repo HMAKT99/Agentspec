@@ -81,7 +81,7 @@ export function EditorShell({ initialSpec }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,5fr)_minmax(560px,4fr)]">
         <div className="h-[70vh] min-h-[520px]">
           <MonacoPane
             value={text}
@@ -91,8 +91,8 @@ export function EditorShell({ initialSpec }: Props) {
           />
         </div>
 
-        <aside className="flex h-[70vh] min-h-[520px] flex-col overflow-hidden rounded-[var(--radius)] border border-[color:var(--color-line)] bg-[color:var(--color-bg)]">
-          <nav className="flex shrink-0 gap-1 border-b border-[color:var(--color-line)] px-2 py-1.5 text-sm">
+        <aside className="flex h-[70vh] min-h-[520px] flex-col overflow-hidden rounded-[var(--radius)] border border-[color:var(--color-line-strong)] bg-[color:var(--color-bg-alt)]">
+          <nav className="flex shrink-0 flex-wrap gap-1 border-b border-[color:var(--color-line)] px-2 py-1.5 text-xs uppercase tracking-wider">
             {TAB_ORDER.map((t) => {
               const active = t.id === activeTab;
               return (
@@ -102,8 +102,8 @@ export function EditorShell({ initialSpec }: Props) {
                   onClick={() => setActiveTab(t.id)}
                   className={`rounded-md px-2.5 py-1 transition-colors ${
                     active
-                      ? "bg-[color:var(--color-fg)] text-[color:var(--color-bg)]"
-                      : "text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-fg)]"
+                      ? "bg-[color:var(--color-accent)] text-[color:var(--color-bg)]"
+                      : "text-[color:var(--color-fg-muted)] hover:text-[color:var(--color-accent)]"
                   }`}
                 >
                   {t.label}
