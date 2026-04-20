@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: HMAKT99/Agentspec/apps/action@v0.1.0
+      - uses: HMAKT99/Agentspec/apps/action@v0.2.0
         with:
           fail-below: "70"
 ```
@@ -141,7 +141,7 @@ Everything else — `lint`, `score`, `fix`, `diff`, `explain`, `init` — runs e
 - uses: actions/checkout@v4
   with:
     fetch-depth: 0
-- uses: HMAKT99/Agentspec/apps/action@v0.1.0
+- uses: HMAKT99/Agentspec/apps/action@v0.2.0
   with:
     fail-below: "70"
 ```

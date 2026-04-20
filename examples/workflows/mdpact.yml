@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: HMAKT99/Agentspec/apps/action@v0.1.0
+      - uses: HMAKT99/Agentspec/apps/action@v0.2.0
         with:
           fail-below: "70"
           # Set to "true" and provide the relevant API-key secrets to also run
