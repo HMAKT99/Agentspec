@@ -10,9 +10,21 @@ export interface Diagnostic {
   endColumn: number;
 }
 
+export interface FixPreview {
+  /** Which diagnostic this fix resolves. References Diagnostic by array index. */
+  diagnosticIndex: number;
+  ruleId: string;
+  description: string;
+  startOffset: number;
+  endOffset: number;
+  replacement: string;
+  safety: "safe" | "unsafe";
+}
+
 export interface EditorTabContext {
   text: string;
   diagnostics: Diagnostic[];
+  fixes: FixPreview[];
   bindings: Array<{
     id: string;
     text: string;
@@ -31,9 +43,13 @@ export interface EditorTabContext {
   focusLine: (line: number, column?: number) => void;
   selectedDiagnostic: number | null;
   setSelectedDiagnostic: (index: number | null) => void;
+  /**
+   * Apply a single fix to the spec text. Called by the Fix tab.
+   */
+  applyFix: (fix: FixPreview) => void;
 }
 
-export type TabId = "heatmap" | "outline" | "preview" | "review" | "problems";
+export type TabId = "heatmap" | "outline" | "preview" | "review" | "problems" | "fix";
 
 export const TAB_ORDER: { id: TabId; label: string }[] = [
   { id: "heatmap", label: "Heatmap" },
@@ -41,4 +57,5 @@ export const TAB_ORDER: { id: TabId; label: string }[] = [
   { id: "preview", label: "Preview" },
   { id: "review", label: "Review" },
   { id: "problems", label: "Problems" },
+  { id: "fix", label: "Fix" },
 ];

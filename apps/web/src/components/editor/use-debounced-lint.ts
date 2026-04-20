@@ -4,6 +4,17 @@ import { lint, parseSpec } from "@mdpact/core";
 import { allRules } from "@mdpact/rules";
 import { useEffect, useState } from "react";
 
+export interface FixEntry {
+  /** Index into the parent results[] array. */
+  diagnosticIndex: number;
+  ruleId: string;
+  description: string;
+  startOffset: number;
+  endOffset: number;
+  replacement: string;
+  safety: "safe" | "unsafe";
+}
+
 export interface LintResult {
   id: number;
   errorCount: number;
@@ -30,6 +41,11 @@ export interface LintResult {
     endLine: number;
     endColumn: number;
   }>;
+  /**
+   * Subset of `results` whose rule supports `fix()`. Each entry carries the
+   * resolved replacement so the editor can apply it with one click.
+   */
+  fixes: FixEntry[];
 }
 
 /**
@@ -78,6 +94,31 @@ function runLint(text: string): LintResult {
       }
     }
 
+    // Collect fixes for any diagnostic whose rule implements fix(). This
+    // mirrors collectFixes() in packages/cli/src/commands/fix.ts, but runs
+    // entirely in-browser against the same rule catalog.
+    const ruleById = new Map(allRules.map((r) => [r.id, r]));
+    const fixes: FixEntry[] = [];
+    for (let i = 0; i < report.results.length; i += 1) {
+      const result = report.results[i];
+      if (!result) continue;
+      const rule = ruleById.get(result.ruleId);
+      if (!rule || !rule.fix || rule.fixable === false) continue;
+      const fix = rule.fix({ spec, allSpecs: [spec], options: {} }, result);
+      if (!fix) continue;
+      const start = fix.range.start.offset ?? 0;
+      const end = fix.range.end.offset ?? start;
+      fixes.push({
+        diagnosticIndex: i,
+        ruleId: result.ruleId,
+        description: fix.description,
+        startOffset: start,
+        endOffset: end,
+        replacement: fix.replacement,
+        safety: rule.fixable === "unsafe" ? "unsafe" : "safe",
+      });
+    }
+
     return {
       id,
       errorCount: report.errorCount,
@@ -106,6 +147,7 @@ function runLint(text: string): LintResult {
         endLine: r.range.end.line,
         endColumn: r.range.end.column,
       })),
+      fixes,
     };
   } catch (err) {
     console.warn("[mdpact-lint]", err);
@@ -119,6 +161,7 @@ function runLint(text: string): LintResult {
       extractedBindings: [],
       headings: [],
       results: [],
+      fixes: [],
     };
   }
 }
