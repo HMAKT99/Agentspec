@@ -11,6 +11,7 @@ import { OutlineTab } from "./tabs/outline";
 import { PreviewTab } from "./tabs/preview";
 import { ProblemsTab } from "./tabs/problems";
 import { ReviewTab } from "./tabs/review";
+import { SimulateTab } from "./tabs/simulate";
 import { type FixPreview, TAB_ORDER, type TabId } from "./types";
 import { useDebouncedLint } from "./use-debounced-lint";
 
@@ -128,6 +129,7 @@ export function EditorShell({ initialSpec }: Props) {
             {activeTab === "review" && <ReviewTab ctx={ctx} />}
             {activeTab === "problems" && <ProblemsTab ctx={ctx} />}
             {activeTab === "fix" && <FixTab ctx={ctx} />}
+            {activeTab === "simulate" && <SimulateTab ctx={ctx} />}
           </div>
         </aside>
       </div>

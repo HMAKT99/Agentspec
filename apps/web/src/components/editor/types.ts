@@ -49,7 +49,7 @@ export interface EditorTabContext {
   applyFix: (fix: FixPreview) => void;
 }
 
-export type TabId = "heatmap" | "outline" | "preview" | "review" | "problems" | "fix";
+export type TabId = "heatmap" | "outline" | "preview" | "review" | "problems" | "fix" | "simulate";
 
 export const TAB_ORDER: { id: TabId; label: string }[] = [
   { id: "heatmap", label: "Heatmap" },
@@ -58,4 +58,5 @@ export const TAB_ORDER: { id: TabId; label: string }[] = [
   { id: "review", label: "Review" },
   { id: "problems", label: "Problems" },
   { id: "fix", label: "Fix" },
+  { id: "simulate", label: "Simulate" },
 ];
