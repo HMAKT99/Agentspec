@@ -1,6 +1,6 @@
 {
   "name": "@mdpact/engine",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Behavior prediction engine for mdpact",
   "type": "module",
   "main": "./dist/index.js",
