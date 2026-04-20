@@ -29,9 +29,11 @@ export default function EditorPage() {
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-[1400px] px-6 pb-10 pt-6">
+      <main className="mx-auto w-full max-w-[1680px] px-4 pt-6 pb-10 sm:px-6">
         <header className="mb-4 flex flex-col gap-1">
-          <h1 className="text-2xl font-semibold tracking-tight">Editor</h1>
+          <h1 className="font-display text-3xl font-normal tracking-tight text-[color:var(--color-fg)]">
+            Editor
+          </h1>
           <p className="text-sm text-[color:var(--color-fg-muted)]">
             Write on the left. Visualize on the right. Five lenses on the same parsed spec —
             heatmap, outline, preview, review, problems. Runs entirely in your browser.

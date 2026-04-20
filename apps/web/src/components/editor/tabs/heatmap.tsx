@@ -6,8 +6,8 @@ import type { EditorTabContext } from "../types";
 const ATTENTION_TOKENS = 4000;
 const CHARS_PER_TOKEN = 4;
 
-const CHART_HEIGHT = 160;
-const CHART_PADDING = { top: 24, right: 16, bottom: 24, left: 16 };
+const CHART_HEIGHT = 220;
+const CHART_PADDING = { top: 32, right: 24, bottom: 32, left: 24 };
 const TOKEN_AXIS_TICKS = [0, 1000, 2000, 3000, 4000, 6000, 8000, 10000];
 
 interface Props {
@@ -47,8 +47,9 @@ export function HeatmapTab({ ctx }: Props) {
         role="img"
         aria-label="Attention heatmap showing binding rule positions relative to the 4K-token attention threshold"
         viewBox={`0 0 1000 ${CHART_HEIGHT}`}
-        className="w-full"
-        preserveAspectRatio="none"
+        className="w-full shrink-0"
+        preserveAspectRatio="xMidYMid meet"
+        style={{ height: `${CHART_HEIGHT}px` }}
       >
         <defs>
           <linearGradient id="buried-zone" x1="0" y1="0" x2="1" y2="0">
