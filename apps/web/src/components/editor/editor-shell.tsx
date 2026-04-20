@@ -5,12 +5,13 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { ScoreBar } from "./score-bar";
+import { FixTab } from "./tabs/fix";
 import { HeatmapTab } from "./tabs/heatmap";
 import { OutlineTab } from "./tabs/outline";
 import { PreviewTab } from "./tabs/preview";
 import { ProblemsTab } from "./tabs/problems";
 import { ReviewTab } from "./tabs/review";
-import { TAB_ORDER, type TabId } from "./types";
+import { type FixPreview, TAB_ORDER, type TabId } from "./types";
 import { useDebouncedLint } from "./use-debounced-lint";
 
 const MonacoPane = dynamic(() => import("./monaco-pane").then((m) => m.MonacoPane), {
@@ -57,10 +58,18 @@ export function EditorShell({ initialSpec }: Props) {
     editorRef.current = ed;
   }, []);
 
+  const applyFix = useCallback((fix: FixPreview) => {
+    setText((current) => {
+      if (fix.startOffset > current.length || fix.endOffset > current.length) return current;
+      return current.slice(0, fix.startOffset) + fix.replacement + current.slice(fix.endOffset);
+    });
+  }, []);
+
   const ctx = useMemo(
     () => ({
       text,
       diagnostics: report?.results ?? [],
+      fixes: report?.fixes ?? [],
       bindings: report?.extractedBindings ?? [],
       headings: report?.headings ?? [],
       tokens: report?.tokens ?? 0,
@@ -68,8 +77,9 @@ export function EditorShell({ initialSpec }: Props) {
       focusLine,
       selectedDiagnostic,
       setSelectedDiagnostic,
+      applyFix,
     }),
-    [text, report, focusLine, selectedDiagnostic],
+    [text, report, focusLine, selectedDiagnostic, applyFix],
   );
 
   const counts = {
@@ -117,6 +127,7 @@ export function EditorShell({ initialSpec }: Props) {
             {activeTab === "preview" && <PreviewTab ctx={ctx} />}
             {activeTab === "review" && <ReviewTab ctx={ctx} />}
             {activeTab === "problems" && <ProblemsTab ctx={ctx} />}
+            {activeTab === "fix" && <FixTab ctx={ctx} />}
           </div>
         </aside>
       </div>
