@@ -20,7 +20,7 @@
     "tinyglobby": "^0.2.10"
   },
   "devDependencies": {
-    "@types/node": "^20.17.0",
+    "@types/node": "^25.6.0",
     "@vercel/ncc": "^0.38.3"
   }
 }
